@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/features/app/presentation/widgets/appBar/appbar.dart';
+import 'package:weathque/features/app/presentation/widgets/texts/condition.dart';
 import 'package:weathque/features/app/presentation/widgets/texts/date.dart';
 
 void main() {
@@ -41,7 +42,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             //Spacer here
-            const Date(date: "Friday, 20 January", textColor: CustomColors.yellow,)
+            const Date(date: "Friday, 20 January", textColor: CustomColors.yellow,),
+            const Condition(condition: "Sunny", textColor: CustomColors.black)
           ],
         ),
       )
