@@ -43,9 +43,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             //Spacer here
-            const Date(date: "Friday, 20 January", textColor: CustomColors.yellow,),
-            const Condition(condition: "Sunny", textColor: CustomColors.black),
-            const Temperature(temperature: "31", textColor: CustomColors.black)
+            const Date(date: "Friday, 20 January"),
+            const Condition(condition: "Sunny"),
+            const Temperature(temperature: "31")
           ],
         ),
       )
