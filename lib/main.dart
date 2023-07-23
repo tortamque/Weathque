@@ -48,8 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
           const Date(date: "Friday, 20 January"),
           const Condition(condition: "Sunny"),
           const Temperature(temperature: "31"),
-          const DailySummary(),
-          const SummaryText(text: "Now it feels like +35\", actually +31.\nIt feels hot because of the direct sun. Today,\nthe temperature is felt in the range from +31\" to 27\".")
+          const DailySummary(padding: 30),
+          const SummaryText(padding: 30, text: "Now it feels like +35\", actually +31.\nIt feels hot because of the direct sun. Today,\nthe temperature is felt in the range from +31\" to 27\".")
         ],
       )
     );
