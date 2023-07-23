@@ -3,6 +3,7 @@ import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/features/app/presentation/widgets/appBar/appbar.dart';
 import 'package:weathque/features/app/presentation/widgets/texts/condition.dart';
 import 'package:weathque/features/app/presentation/widgets/texts/date.dart';
+import 'package:weathque/features/app/presentation/widgets/texts/temperature.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,7 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             //Spacer here
             const Date(date: "Friday, 20 January", textColor: CustomColors.yellow,),
-            const Condition(condition: "Sunny", textColor: CustomColors.black)
+            const Condition(condition: "Sunny", textColor: CustomColors.black),
+            const Temperature(temperature: "31", textColor: CustomColors.black)
           ],
         ),
       )
