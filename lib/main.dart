@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
-import 'package:weathque/features/app/presentation/widgets/AppBar/appbar.dart';
-import 'package:weathque/features/app/presentation/widgets/Texts/date.dart';
+import 'package:weathque/features/app/presentation/widgets/appBar/appbar.dart';
+import 'package:weathque/features/app/presentation/widgets/texts/date.dart';
 
 void main() {
   runApp(const MyApp());
