@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:weathque/config/theme/custom_colors.dart';
 
 class Condition extends StatelessWidget {
   final String condition;
-  final Color textColor;
 
   const Condition({
     required this.condition,
-    required this.textColor,
     super.key
   });
 
@@ -16,8 +15,8 @@ class Condition extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Text(
         condition,
-        style: TextStyle(
-          color: textColor,
+        style: const TextStyle(
+          color: CustomColors.black,
           fontWeight: FontWeight.bold,
           fontSize: 16
         ),

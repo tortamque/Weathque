@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:weathque/config/theme/custom_colors.dart';
 
 class Temperature extends StatelessWidget {
   final String temperature;
-  final Color textColor;
 
   const Temperature({
   required this.temperature,
-    required this.textColor,
     super.key
   });
 
@@ -14,9 +13,9 @@ class Temperature extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       "${temperature}°",
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 165,
-        color: textColor,
+        color: CustomColors.black,
         fontWeight: FontWeight.w400
       )
     );

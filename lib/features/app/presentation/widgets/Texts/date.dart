@@ -3,11 +3,9 @@ import 'package:weathque/config/theme/custom_colors.dart';
 
 class Date extends StatelessWidget {
   final String date;
-  final Color textColor;
 
   const Date({
     required this.date, 
-    required this.textColor,
     super.key
   });
 
