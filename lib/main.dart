@@ -40,16 +40,15 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: CustomColors.yellow,
       appBar: CustomAppBar(title: widget.title),
-      body: Center(
-        child: Column(
-          children: [
-            //Spacer here
-            const Date(date: "Friday, 20 January"),
-            const Condition(condition: "Sunny"),
-            const Temperature(temperature: "31"),
-            const DailySummary()
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //Spacer here
+          const Date(date: "Friday, 20 January"),
+          const Condition(condition: "Sunny"),
+          const Temperature(temperature: "31"),
+          const DailySummary()
+        ],
       )
     );
   }

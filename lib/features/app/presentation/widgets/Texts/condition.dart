@@ -11,14 +11,16 @@ class Condition extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: Text(
-        condition,
-        style: const TextStyle(
-          color: CustomColors.black,
-          fontWeight: FontWeight.bold,
-          fontSize: 16
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Text(
+          condition,
+          style: const TextStyle(
+            color: CustomColors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 16
+          ),
         ),
       ),
     );

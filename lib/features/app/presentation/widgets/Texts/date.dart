@@ -11,20 +11,22 @@ class Date extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        color: CustomColors.black
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 15,
-          vertical: 5 
+    return Center(
+      child: Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          color: CustomColors.black
         ),
-        child: Text(
-          date,
-          style: const TextStyle(
-            color: CustomColors.yellow,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 5 
+          ),
+          child: Text(
+            date,
+            style: const TextStyle(
+              color: CustomColors.yellow,
+            ),
           ),
         ),
       ),
