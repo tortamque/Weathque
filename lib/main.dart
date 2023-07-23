@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/features/app/presentation/widgets/AppBar/appbar.dart';
+import 'package:weathque/features/app/presentation/widgets/Texts/date.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,11 +39,9 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: CustomAppBar(title: widget.title),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Here will be an amazing application :D",
-            )
+            //Spacer here
+            const Date(date: "Friday, 20 January", textColor: CustomColors.yellow,)
           ],
         ),
       )
