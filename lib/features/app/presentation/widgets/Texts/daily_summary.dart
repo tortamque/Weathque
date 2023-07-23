@@ -5,11 +5,14 @@ class DailySummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      "Daily Summary",
-      style: TextStyle(
-        fontWeight: FontWeight.w800,
-        fontSize: 18
+    return const Padding(
+      padding: EdgeInsets.only(left: 40),
+      child: Text(
+        "Daily Summary",
+        style: TextStyle(
+          fontWeight: FontWeight.w800,
+          fontSize: 18
+        ),
       ),
     );
   }
