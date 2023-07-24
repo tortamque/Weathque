@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/features/app/presentation/widgets/appBar/appbar.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/condition.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/daily_summary.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/date.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/summary_text.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/temperature.dart';
+import 'package:weathque/features/app/presentation/widgets/core/app.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,17 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: CustomColors.yellow,
       appBar: CustomAppBar(title: widget.title),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          //Spacer here
-          const Date(date: "Friday, 20 January"),
-          const Condition(condition: "Sunny"),
-          const Temperature(temperature: "31"),
-          const DailySummary(padding: 30),
-          const SummaryText(padding: 30, text: "Now it feels like +35\", actually +31.\nIt feels hot because of the direct sun. Today,\nthe temperature is felt in the range from +31\" to 27\".")
-        ],
-      )
+      body: App()
     );
   }
 }
