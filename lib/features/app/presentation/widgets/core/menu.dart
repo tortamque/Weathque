@@ -20,9 +20,10 @@ class Menu extends StatelessWidget {
           const Date(date: "Friday, 20 January"),
           const Condition(condition: "Sunny"),
           const Temperature(temperature: "31"),
-          const Header(text: "Daily Summary",),
+          const Header(text: "Daily Summary"),
           const SummaryText(text: "Now it feels like +35\", actually +31.\nIt feels hot because of the direct sun. Today,\nthe temperature is felt in the range from +31\" to 27\"."),
-          WeatherCard()
+          const WeatherCard(),
+          const Header(text: "Weekly forecast"),
         ],
       ),
     );
