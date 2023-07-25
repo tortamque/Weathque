@@ -23,7 +23,7 @@ class Menu extends StatelessWidget {
           const Condition(condition: "Sunny"),
           const Temperature(temperature: "31"),
           const Header(text: "Daily Summary"),
-          const SummaryText(text: "Now it feels like +35\", actually +31.\nIt feels hot because of the direct sun. Today,\nthe temperature is felt in the range from +31\" to 27\".аааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа"),
+          const SummaryText(text: "Now it feels like +35\", actually +31.\nIt feels hot because of the direct sun. Today,\nthe temperature is felt in the range from +31\" to 27\"."),
           Spacer(flex: 3),
           const WeatherCard(),
           Spacer(flex: 3),
