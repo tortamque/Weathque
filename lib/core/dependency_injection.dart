@@ -4,6 +4,7 @@ import 'package:weathque/features/app/data/data_sources/remote/api_service.dart'
 import 'package:weathque/features/app/data/repository/weather_repository_implementation.dart';
 import 'package:weathque/features/app/domain/repository/weather_repository.dart';
 import 'package:weathque/features/app/domain/usecases/get_current_weather.dart';
+import 'package:weathque/features/app/presentation/bloc/get_current_weather_bloc.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -27,5 +28,7 @@ Future<void> initializeDependencies() async {
   );
 
   // Blocs
-  // TODO: Create Blocs and register them here
+  locator.registerFactory<GetCurrentWeatherBloc>(
+    () => GetCurrentWeatherBloc(locator())
+  );
 }
