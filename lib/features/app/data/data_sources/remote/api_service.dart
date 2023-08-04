@@ -10,8 +10,7 @@ abstract class CurrentWeatherApiService{
 
   @GET("")
   Future<HttpResponse<WeatherModel>> getCurrentWeather({
-    @Query("lat") required String latitude,
-    @Query("lon") required String longitude,
+    @Query("q") required String cityName,
     @Query("appid") required String apiKey
   });
 }

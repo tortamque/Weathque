@@ -22,14 +22,12 @@ class _CurrentWeatherApiService implements CurrentWeatherApiService {
 
   @override
   Future<HttpResponse<WeatherModel>> getCurrentWeather({
-    required latitude,
-    required longitude,
+    required cityName,
     required apiKey,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'lat': latitude,
-      r'lon': longitude,
+      r'q': cityName,
       r'appid': apiKey,
     };
     final _headers = <String, dynamic>{};

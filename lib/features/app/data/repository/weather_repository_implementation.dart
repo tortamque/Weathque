@@ -9,8 +9,8 @@ class WeatherRepositoryImplementation implements WeatherRepository{
   WeatherRepositoryImplementation(this._currentWeatherApiService);
 
   @override
-  Future<WeatherModel> getCurrentWeather(String latitude, String longitude) async {
-    final httpResponse = await _currentWeatherApiService.getCurrentWeather(latitude: latitude, longitude: longitude, apiKey: apiKey);
+  Future<WeatherModel> getCurrentWeather(String cityName) async {
+    final httpResponse = await _currentWeatherApiService.getCurrentWeather(cityName: cityName, apiKey: apiKey);
 
     return httpResponse.data;
   }
