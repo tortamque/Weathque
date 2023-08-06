@@ -68,14 +68,14 @@ class WeatherData {
 }
 
 class Information {
-  final double temp;
-  final double feelsLike;
-  final double tempMin;
-  final double tempMax;
-  final int pressure;
-  final int humidity;
-  final int seaLevel;
-  final int groundLevel;
+  final double? temp;
+  final double? feelsLike;
+  final double? tempMin;
+  final double? tempMax;
+  final int? pressure;
+  final int? humidity;
+  final int? seaLevel;
+  final int? groundLevel;
 
   Information({
     required this.temp,
@@ -103,9 +103,9 @@ class Information {
 }
 
 class Wind {
-  final double speed;
-  final int deg;
-  final double gust;
+  final double? speed;
+  final int? deg;
+  final double? gust;
 
   Wind({
     required this.speed,
@@ -115,9 +115,9 @@ class Wind {
 
   factory Wind.fromJson(Map<String, dynamic> json) {
     return Wind(
-      speed: json['speed'].toDouble(),
+      speed: json['speed']?.toDouble(),
       deg: json['deg'],
-      gust: json['gust'].toDouble(),
+      gust: json['gust']?.toDouble(),
     );
   }
 }
