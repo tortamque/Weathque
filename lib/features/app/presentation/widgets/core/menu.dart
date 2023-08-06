@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:weathque/core/dependency_injection.dart';
+import 'package:weathque/features/app/domain/entities/summary_builder.dart';
 import 'package:weathque/features/app/domain/entities/weather_entity.dart';
 import 'package:weathque/features/app/presentation/widgets/card/weather_card.dart';
 import 'package:weathque/features/app/presentation/widgets/scrollable/weekly_forecast.dart';
@@ -16,6 +18,7 @@ class Menu extends StatelessWidget {
   final String currentDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
   late final String condition;
   late final String temperature;
+  late final String summary;
 
   Menu({
     required this.weatherEntity,
@@ -28,6 +31,10 @@ class Menu extends StatelessWidget {
     temperature = weatherEntity != null ?
       weatherEntity!.information.temp!.round().toString()
       : "0";
+
+    summary = weatherEntity != null ?
+      locator<SummaryBuilder>()(weatherEntity!)
+      : "Not available";
   }
 
   @override
@@ -41,7 +48,7 @@ class Menu extends StatelessWidget {
           Condition(condition: condition),
           Temperature(temperature: temperature),
           const Header(text: "Daily Summary"),
-          const SummaryText(text: "Now it feels like +35\", actually +31.\nIt feels hot because of the direct sun. Today,\nthe temperature is felt in the range from +31\" to 27\"."),
+          SummaryText(text: summary),
           Spacer(flex: 3),
           const WeatherCard(),
           Spacer(flex: 3),
