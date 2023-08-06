@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
+import 'package:weathque/core/dependency_injection.dart';
 import 'package:weathque/features/app/presentation/widgets/appBar/appbar.dart';
 import 'package:weathque/features/app/presentation/widgets/core/app.dart';
 
 void main() {
+  initializeDependencies();
   runApp(const MyApp());
 }
 
