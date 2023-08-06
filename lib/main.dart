@@ -6,7 +6,7 @@ import 'package:weathque/features/app/presentation/bloc/get_current_weather_bloc
 import 'package:weathque/features/app/presentation/bloc/get_current_weather_event.dart';
 import 'package:weathque/features/app/presentation/bloc/get_current_weather_state.dart';
 import 'package:weathque/features/app/presentation/pages/loading_page.dart';
-import 'package:weathque/features/app/presentation/pages/paris.dart';
+import 'package:weathque/features/app/presentation/pages/weather_page.dart';
 void main() {
   initializeDependencies();
   runApp(const MyApp());
@@ -26,7 +26,9 @@ class MyApp extends StatelessWidget {
                 return const LoadingPage();
               }
               if(state is GetCurrentWeatherDone){
-                return ParisPage();
+                return WeatherPage(
+                  weatherEntity: state.weatherEntity,
+                );
               }
               return const SizedBox();
             },

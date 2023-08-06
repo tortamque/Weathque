@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:weathque/features/app/domain/entities/weather_entity.dart';
 import 'package:weathque/features/app/presentation/widgets/card/weather_card.dart';
 import 'package:weathque/features/app/presentation/widgets/scrollable/weekly_forecast.dart';
 import 'package:weathque/features/app/presentation/widgets/texts/condition.dart';
@@ -10,7 +12,13 @@ import 'package:weathque/features/app/presentation/widgets/texts/weekly_forecast
 
 
 class Menu extends StatelessWidget {
-  const Menu({super.key});
+  final WeatherEntity? weatherEntity;
+  final String currentDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
+
+  Menu({
+    required this.weatherEntity,
+    super.key
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +27,7 @@ class Menu extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Date(date: "Friday, 20 January"),
+          Date(date: currentDate),
           const Condition(condition: "Sunny"),
           const Temperature(temperature: "31"),
           const Header(text: "Daily Summary"),
