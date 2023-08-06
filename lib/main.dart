@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:weathque/config/theme/app_themes.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/core/dependency_injection.dart';
+import 'package:weathque/features/app/presentation/pages/paris.dart';
 import 'package:weathque/features/app/presentation/widgets/appBar/appbar.dart';
-import 'package:weathque/features/app/presentation/widgets/core/app.dart';
+import 'package:weathque/features/app/presentation/widgets/core/menu.dart';
 
 void main() {
   initializeDependencies();
@@ -14,32 +16,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Weathque',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: CustomColors.yellow),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Weathque'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: CustomColors.yellow,
-      appBar: CustomAppBar(title: widget.title),
-      body: App()
+      theme: theme(),
+      home: ParisPage()
     );
   }
 }
