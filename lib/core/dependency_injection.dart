@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
 import 'package:weathque/features/app/data/data_sources/remote/api_service.dart';
 import 'package:weathque/features/app/data/repository/weather_repository_implementation.dart';
+import 'package:weathque/features/app/domain/entities/current_city_entity.dart';
 import 'package:weathque/features/app/domain/repository/weather_repository.dart';
 import 'package:weathque/features/app/domain/usecases/get_current_weather.dart';
 import 'package:weathque/features/app/presentation/bloc/get_current_weather_bloc.dart';
@@ -31,4 +32,7 @@ Future<void> initializeDependencies() async {
   locator.registerFactory<GetCurrentWeatherBloc>(
     () => GetCurrentWeatherBloc(locator())
   );
+
+  //Entities
+  locator.registerSingleton(CurrentCity());
 }
