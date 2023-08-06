@@ -14,11 +14,21 @@ import 'package:weathque/features/app/presentation/widgets/texts/weekly_forecast
 class Menu extends StatelessWidget {
   final WeatherEntity? weatherEntity;
   final String currentDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
+  late final String condition;
+  late final String temperature;
 
   Menu({
     required this.weatherEntity,
     super.key
-  });
+  }){
+    condition = weatherEntity != null ?
+      weatherEntity!.weather[0].main
+      : "Not available";
+
+    temperature = weatherEntity != null ?
+      weatherEntity!.information.temp!.round().toString()
+      : "0";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +38,8 @@ class Menu extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Date(date: currentDate),
-          const Condition(condition: "Sunny"),
-          const Temperature(temperature: "31"),
+          Condition(condition: condition),
+          Temperature(temperature: temperature),
           const Header(text: "Daily Summary"),
           const SummaryText(text: "Now it feels like +35\", actually +31.\nIt feels hot because of the direct sun. Today,\nthe temperature is felt in the range from +31\" to 27\"."),
           Spacer(flex: 3),
