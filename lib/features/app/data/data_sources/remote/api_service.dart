@@ -11,6 +11,7 @@ abstract class CurrentWeatherApiService{
   @GET("")
   Future<HttpResponse<WeatherModel>> getCurrentWeather({
     @Query("q") required String cityName,
-    @Query("appid") required String apiKey
+    @Query("appid") required String apiKey,
+    @Query("units") String units = "metric"
   });
 }

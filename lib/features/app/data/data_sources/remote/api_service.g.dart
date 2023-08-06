@@ -24,11 +24,13 @@ class _CurrentWeatherApiService implements CurrentWeatherApiService {
   Future<HttpResponse<WeatherModel>> getCurrentWeather({
     required cityName,
     required apiKey,
+    units = "metric",
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'q': cityName,
       r'appid': apiKey,
+      r'units': units,
     };
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
