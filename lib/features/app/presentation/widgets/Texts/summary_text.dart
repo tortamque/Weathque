@@ -13,7 +13,7 @@ class SummaryText extends StatelessWidget {
     return Expanded(
       flex: 8,
       child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
+        scrollDirection: Axis.horizontal,
         child: Text(
           text,
           style: const TextStyle(
