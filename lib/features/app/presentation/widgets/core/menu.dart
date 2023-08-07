@@ -19,6 +19,9 @@ class Menu extends StatelessWidget {
   late final String condition;
   late final String temperature;
   late final String summary;
+  late final String windSpeed;
+  late final String humidity;
+  late final String visibility;
 
   Menu({
     required this.weatherEntity,
@@ -35,6 +38,18 @@ class Menu extends StatelessWidget {
     summary = weatherEntity != null ?
       locator<SummaryBuilder>()(weatherEntity!)
       : "Not available";
+
+    windSpeed = weatherEntity != null ?
+      weatherEntity!.wind.speed.toString()
+      : "Not available";
+
+    humidity = weatherEntity != null ?
+      weatherEntity!.information.humidity.toString()
+      : "Not available";
+
+    visibility = weatherEntity != null ?
+      (weatherEntity!.visibility/1000).round().toString()
+      : "Not available";
   }
 
   @override
@@ -49,9 +64,13 @@ class Menu extends StatelessWidget {
           Temperature(temperature: temperature),
           const Header(text: "Daily Summary"),
           SummaryText(text: summary),
-          Spacer(flex: 3),
-          const WeatherCard(),
-          Spacer(flex: 3),
+          const Spacer(flex: 3),
+          WeatherCard(
+            humidity: humidity,
+            visibility: visibility,
+            windSpeed: windSpeed,
+          ),
+          const Spacer(flex: 3),
           const WeeklyForecastHeader(),
           WeeklyForecast()
         ],
