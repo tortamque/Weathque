@@ -1,6 +1,7 @@
 import 'package:retrofit/retrofit.dart';
 import 'package:weathque/core/constants.dart';
 import 'package:dio/dio.dart';
+import 'package:weathque/features/app/data/models/forecast_weather_model.dart';
 import 'package:weathque/features/app/data/models/weather_model.dart';
 part 'api_service.g.dart';
 
@@ -10,6 +11,18 @@ abstract class CurrentWeatherApiService{
 
   @GET("")
   Future<HttpResponse<WeatherModel>> getCurrentWeather({
+    @Query("q") required String cityName,
+    @Query("appid") required String apiKey,
+    @Query("units") String units = "metric"
+  });
+}
+
+@RestApi(baseUrl: forecastWeatherUrl)
+abstract class ForecastWeatherApiService{
+  factory ForecastWeatherApiService(Dio dio) = _ForecastWeatherApiService;
+
+  @GET("")
+  Future<HttpResponse<ForecastWeatherModel>> getForecast({
     @Query("q") required String cityName,
     @Query("appid") required String apiKey,
     @Query("units") String units = "metric"
