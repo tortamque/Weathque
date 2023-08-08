@@ -25,17 +25,19 @@ class MyApp extends StatelessWidget {
           create: (context) => locator()..add(const GetCurrentWeather(cityName: "Paris"))
         ),
         BlocProvider<GetWeatherForecastBloc>(
-          create: (context) => locator()..add(const GetWeatherForecast(cityName: "Paris")),
+          create: (context) => locator()..add(const GetWeatherForecast(cityName: "Kyiv")),
         )
       ], 
       child: MaterialApp(
           theme: theme(),
+          // GetCurrentWeatherBloc
           home: BlocBuilder<GetCurrentWeatherBloc, GetCurrentWeatherState>(
             builder: (_, currentWeatherState) {
               if(currentWeatherState is GetCurrentWeatherLoading){
                 return const LoadingPage();
               }
               if(currentWeatherState is GetCurrentWeatherDone){
+                // GetWeatherForecastBloc
                 return BlocBuilder<GetWeatherForecastBloc, GetWeatherForecastState>(
                   builder: (_, forecastWeatherState) {
                     if(forecastWeatherState is GetWeatherForecastLoading){
@@ -44,6 +46,7 @@ class MyApp extends StatelessWidget {
                     if(forecastWeatherState is GetWeatherForecastDone){
                       return WeatherPage(
                         weatherEntity: currentWeatherState.weatherEntity,
+                        forecastWeatherEntity: forecastWeatherState.forecastWeatherEntity,
                       );
                     }
                     return const SizedBox();

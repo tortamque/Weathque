@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weathque/core/dependency_injection.dart';
+import 'package:weathque/features/app/domain/entities/forecast_weather_entity.dart';
 import 'package:weathque/features/app/domain/entities/summary_builder.dart';
 import 'package:weathque/features/app/domain/entities/weather_entity.dart';
 import 'package:weathque/features/app/presentation/widgets/card/weather_card.dart';
@@ -15,6 +16,7 @@ import 'package:weathque/features/app/presentation/widgets/texts/weekly_forecast
 
 class Menu extends StatelessWidget {
   final WeatherEntity? weatherEntity;
+  final ForecastWeatherEntity? forecastWeatherEntity;
   final String currentDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
   late final String condition;
   late final String temperature;
@@ -25,6 +27,7 @@ class Menu extends StatelessWidget {
 
   Menu({
     required this.weatherEntity,
+    required this.forecastWeatherEntity,
     super.key
   }){
     condition = weatherEntity != null ?
@@ -72,7 +75,9 @@ class Menu extends StatelessWidget {
           ),
           const Spacer(flex: 3),
           const WeeklyForecastHeader(),
-          WeeklyForecast()
+          WeeklyForecast(
+            forecastWeatherEntity: forecastWeatherEntity,
+          )
         ],
       ),
     );
