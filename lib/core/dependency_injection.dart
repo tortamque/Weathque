@@ -7,7 +7,8 @@ import 'package:weathque/features/app/domain/entities/summary_builder.dart';
 import 'package:weathque/features/app/domain/repository/weather_repository.dart';
 import 'package:weathque/features/app/domain/usecases/get_current_weather.dart';
 import 'package:weathque/features/app/domain/usecases/get_weather_forecast.dart';
-import 'package:weathque/features/app/presentation/bloc/get_current_weather_bloc.dart';
+import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_bloc.dart';
+import 'package:weathque/features/app/presentation/bloc/get_weather_forecast/get_weather_forecast_bloc.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -42,6 +43,9 @@ Future<void> initializeDependencies() async {
   // Blocs
   locator.registerFactory<GetCurrentWeatherBloc>(
     () => GetCurrentWeatherBloc(locator())
+  );
+  locator.registerFactory<GetWeatherForecastBloc>(
+    () => GetWeatherForecastBloc(locator())
   );
 
   //Entities
