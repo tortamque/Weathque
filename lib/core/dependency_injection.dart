@@ -6,6 +6,7 @@ import 'package:weathque/features/app/domain/entities/current_city_entity.dart';
 import 'package:weathque/features/app/domain/entities/summary_builder.dart';
 import 'package:weathque/features/app/domain/repository/weather_repository.dart';
 import 'package:weathque/features/app/domain/usecases/get_current_weather.dart';
+import 'package:weathque/features/app/domain/usecases/get_weather_forecast.dart';
 import 'package:weathque/features/app/presentation/bloc/get_current_weather_bloc.dart';
 
 GetIt locator = GetIt.instance;
@@ -18,15 +19,24 @@ Future<void> initializeDependencies() async {
   locator.registerSingleton<CurrentWeatherApiService>(
     CurrentWeatherApiService(locator())
   );
+  locator.registerSingleton<ForecastWeatherApiService>(
+    ForecastWeatherApiService(locator())
+  );
 
   // Repo
   locator.registerSingleton<WeatherRepository>(
     WeatherRepositoryImplementation(locator())
   );
+  locator.registerSingleton<ForecastWeatherRepository>(
+    ForecastWeatherRepositoryImplementation(locator())
+  );
 
   // Use cases
   locator.registerSingleton<GetCurrentWeatherUseCase>(
     GetCurrentWeatherUseCase(locator())
+  );
+  locator.registerSingleton<GetWeatherForecastUseCase>(
+    GetWeatherForecastUseCase(locator())
   );
 
   // Blocs
