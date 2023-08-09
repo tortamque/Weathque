@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/config/theme/custom_colors.dart';
-import 'package:weathque/features/app/presentation/widgets/appBar/appbar.dart';
-import 'package:weathque/features/app/presentation/widgets/core/app.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weathque/config/theme/app_themes.dart';
+import 'package:weathque/core/dependency_injection.dart';
+import 'package:weathque/features/app/domain/entities/current_city_entity.dart';
+import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_bloc.dart';
+import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_event.dart';
+import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_state.dart';
+import 'package:weathque/features/app/presentation/bloc/get_weather_forecast/get_weather_forecast_bloc.dart';
+import 'package:weathque/features/app/presentation/bloc/get_weather_forecast/get_weather_forecast_event.dart';
+import 'package:weathque/features/app/presentation/bloc/get_weather_forecast/get_weather_forecast_state.dart';
+import 'package:weathque/features/app/presentation/pages/loading_page.dart';
+import 'package:weathque/features/app/presentation/pages/weather_page.dart';
 void main() {
+  initializeDependencies();
   runApp(const MyApp());
 }
 
@@ -11,33 +20,44 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Weathque',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: CustomColors.yellow),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Weathque'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: CustomColors.yellow,
-      appBar: CustomAppBar(title: widget.title),
-      body: App()
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<GetCurrentWeatherBloc>(
+          create: (context) => locator()..add(GetCurrentWeather(cityName: locator<CurrentCity>().currentCity.string))
+        ),
+        BlocProvider<GetWeatherForecastBloc>(
+          create: (context) => locator()..add(GetWeatherForecast(cityName: locator<CurrentCity>().currentCity.string)),
+        )
+      ], 
+      child: MaterialApp(
+          theme: theme(),
+          // GetCurrentWeatherBloc
+          home: BlocBuilder<GetCurrentWeatherBloc, GetCurrentWeatherState>(
+            builder: (_, currentWeatherState) {
+              if(currentWeatherState is GetCurrentWeatherLoading){
+                return const LoadingPage();
+              }
+              if(currentWeatherState is GetCurrentWeatherDone){
+                // GetWeatherForecastBloc
+                return BlocBuilder<GetWeatherForecastBloc, GetWeatherForecastState>(
+                  builder: (_, forecastWeatherState) {
+                    if(forecastWeatherState is GetWeatherForecastLoading){
+                      return const LoadingPage();
+                    }
+                    if(forecastWeatherState is GetWeatherForecastDone){
+                      return WeatherPage(
+                        weatherEntity: currentWeatherState.weatherEntity,
+                        forecastWeatherEntity: forecastWeatherState.forecastWeatherEntity,
+                      );
+                    }
+                    return const SizedBox();
+                  },
+                );
+              }
+              return const SizedBox();
+            },
+          ),
+      )
     );
   }
 }
