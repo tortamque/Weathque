@@ -140,7 +140,7 @@ class Wind {
 
   factory Wind.fromJson(Map<String, dynamic> json) {
     return Wind(
-      speed: json['speed'],
+      speed: json['speed'].toDouble(),
       deg: json['deg'],
       gust: json['gust'].toDouble(),
     );
