@@ -60,6 +60,7 @@ class Menu extends StatelessWidget {
     return Expanded(
       flex: 11,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Date(date: currentDate),
@@ -67,13 +68,13 @@ class Menu extends StatelessWidget {
           Temperature(temperature: temperature),
           const Header(text: "Daily Summary"),
           SummaryText(text: summary),
-          const Spacer(flex: 3),
+          const SizedBox(height: 25),
           WeatherCard(
             humidity: humidity,
             visibility: visibility,
             windSpeed: windSpeed,
           ),
-          const Spacer(flex: 3),
+          const SizedBox(height: 25),
           const WeeklyForecastHeader(),
           WeeklyForecast(
             forecastWeatherEntity: forecastWeatherEntity,

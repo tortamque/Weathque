@@ -25,38 +25,30 @@ class ForecastCard extends StatelessWidget {
           ),
           borderRadius: const BorderRadius.all(Radius.circular(10)),
         ),
-        height: double.infinity,
+        height: 110,
         width: 67.5,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Expanded(
-              flex: 1,
-              child: Text(
-                "${temperature}°",
-                style: TextStyle(
-                  color: CustomColors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16
-                ),
+            Text(
+              "${temperature}°",
+              style: const TextStyle(
+                color: CustomColors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 16
               ),
             ),
-            Expanded(
-              flex: 2,
-              child: Image.asset(
-                iconPath,
-                width: 20,
-                height: 20,
-              ),
+            Image.asset(
+              iconPath,
+              width: 20,
+              height: 20,
             ),
-            Expanded(
-              flex: 1,
-              child: Text(
-                date,
-                style: TextStyle(
-                  color: CustomColors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12
-                ),
+            Text(
+              date,
+              style: TextStyle(
+                color: CustomColors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 12
               ),
             ),
           ],

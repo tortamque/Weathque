@@ -15,36 +15,30 @@ class WeatherCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 16,
-      child: Center(
-        child: Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            color: Colors.black
+    return Container(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        color: Colors.black
+      ),
+      height: 125,
+      child: Row(
+        children: [
+          CardItem(
+            iconPath: "assets/icons/wind.png",
+            data: "${windSpeed}km/h", 
+            type: "Wind"
           ),
-          width: double.infinity,
-          height: 125,
-          child: Row(
-            children: [
-              CardItem(
-                iconPath: "assets/icons/wind.png",
-                data: "${windSpeed}km/h", 
-                type: "Wind"
-              ),
-              CardItem(
-                iconPath: "assets/icons/drop.png",
-                data: "${humidity}%", 
-                type: "Humidity"
-              ),
-              CardItem(
-                iconPath: "assets/icons/eye.png",
-                data: "${visibility}km", 
-                type: "Visibility"
-              ),
-            ],
+          CardItem(
+            iconPath: "assets/icons/drop.png",
+            data: "${humidity}%", 
+            type: "Humidity"
           ),
-        ),
+          CardItem(
+            iconPath: "assets/icons/eye.png",
+            data: "${visibility}km", 
+            type: "Visibility"
+          ),
+        ],
       ),
     );
   }

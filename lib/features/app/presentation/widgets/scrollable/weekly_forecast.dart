@@ -15,47 +15,42 @@ class WeeklyForecast extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 16,
-      child: SizedBox(
-        height: 100,
-        child: forecastWeatherEntity != null ?
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              ForecastCard(
-                temperature: forecastWeatherEntity!.list[8 * 0 + 5].main.temp.round().toString(),
-                iconPath: defineIcon(forecastWeatherEntity!.list[8 * 0 + 5].weather[0].id),
-                date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 1))
-              ),
-              ForecastCard(
-                temperature: forecastWeatherEntity!.list[8 * 1 + 5].main.temp.round().toString(),
-                iconPath: defineIcon(forecastWeatherEntity!.list[8 * 1 + 5].weather[0].id),
-                date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 2))
-              ),
-              ForecastCard(
-                temperature: forecastWeatherEntity!.list[8 * 2 + 5].main.temp.round().toString(),
-                iconPath: defineIcon(forecastWeatherEntity!.list[8 * 2 + 5].weather[0].id),
-                date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 3))
-              ),
-              ForecastCard(
-                temperature: forecastWeatherEntity!.list[8 * 3 + 5].main.temp.round().toString(),
-                iconPath: defineIcon(forecastWeatherEntity!.list[8 * 3 + 5].weather[0].id),
-                date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 4))
-              ),
-              ForecastCard(
-                temperature: forecastWeatherEntity!.list[8 * 4 + 5].main.temp.round().toString(),
-                iconPath: defineIcon(forecastWeatherEntity!.list[8 * 4 + 5].weather[0].id),
-                date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 5))
-              ),
-            ],
+    return forecastWeatherEntity != null ?
+    SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ForecastCard(
+            temperature: forecastWeatherEntity!.list[8 * 0 + 5].main.temp.round().toString(),
+            iconPath: defineIcon(forecastWeatherEntity!.list[8 * 0 + 5].weather[0].id),
+            date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 1))
           ),
-        )
-        : const Center(
-          child: Header(text: "Weekly forecast data isn't available"),
-        )
+          ForecastCard(
+            temperature: forecastWeatherEntity!.list[8 * 1 + 5].main.temp.round().toString(),
+            iconPath: defineIcon(forecastWeatherEntity!.list[8 * 1 + 5].weather[0].id),
+            date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 2))
+          ),
+          ForecastCard(
+            temperature: forecastWeatherEntity!.list[8 * 2 + 5].main.temp.round().toString(),
+            iconPath: defineIcon(forecastWeatherEntity!.list[8 * 2 + 5].weather[0].id),
+            date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 3))
+          ),
+          ForecastCard(
+            temperature: forecastWeatherEntity!.list[8 * 3 + 5].main.temp.round().toString(),
+            iconPath: defineIcon(forecastWeatherEntity!.list[8 * 3 + 5].weather[0].id),
+            date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 4))
+          ),
+          ForecastCard(
+            temperature: forecastWeatherEntity!.list[8 * 4 + 5].main.temp.round().toString(),
+            iconPath: defineIcon(forecastWeatherEntity!.list[8 * 4 + 5].weather[0].id),
+            date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 5))
+          ),
+        ],
       ),
+    )
+    : const Center(
+      child: Header(text: "Weekly forecast data isn't available"),
     );
   }
 
