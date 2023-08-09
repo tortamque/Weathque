@@ -10,16 +10,12 @@ class SummaryText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 8,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 13
-          ),
+    return FittedBox(
+      fit: BoxFit.contain,
+      child: Text(
+        text,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
