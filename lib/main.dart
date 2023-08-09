@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weathque/config/theme/app_themes.dart';
 import 'package:weathque/core/dependency_injection.dart';
+import 'package:weathque/features/app/domain/entities/current_city_entity.dart';
 import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_bloc.dart';
 import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_event.dart';
 import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_state.dart';
@@ -22,10 +23,10 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<GetCurrentWeatherBloc>(
-          create: (context) => locator()..add(const GetCurrentWeather(cityName: "Paris"))
+          create: (context) => locator()..add(GetCurrentWeather(cityName: locator<CurrentCity>().currentCity.string))
         ),
         BlocProvider<GetWeatherForecastBloc>(
-          create: (context) => locator()..add(const GetWeatherForecast(cityName: "Kyiv")),
+          create: (context) => locator()..add(GetWeatherForecast(cityName: locator<CurrentCity>().currentCity.string)),
         )
       ], 
       child: MaterialApp(
