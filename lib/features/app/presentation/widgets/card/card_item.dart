@@ -20,34 +20,28 @@ class CardItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Expanded(
-              flex: 3, 
-              child: Image.asset(
-                iconPath, 
-                height: 40, 
-                width: 40, 
-                color: CustomColors.yellow
+            Image.asset(
+              iconPath, 
+              height: 40, 
+              width: 40, 
+              color: CustomColors.yellow
+            ),
+            Text(
+              data,
+              style: const TextStyle(
+                color: CustomColors.yellow,
+                fontWeight: FontWeight.bold,
+                fontSize: 16
               ),
             ),
-            Expanded(
-              child: Text(
-                data,
-                style: const TextStyle(
-                  color: CustomColors.yellow,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16
-                ),
-              )
-            ),
-            Expanded(
-              child: Text(
-                type,
-                style: const TextStyle(
-                  color: CustomColors.yellow,
-                  fontSize: 12
-                ),
-              )
+            Text(
+              type,
+              style: const TextStyle(
+                color: CustomColors.yellow,
+                fontSize: 12
+              ),
             ),
           ],
         ),
