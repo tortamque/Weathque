@@ -11,14 +11,23 @@ class Temperature extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        "${temperature}°",
-        style: const TextStyle(
-          fontSize: 165,
-          color: CustomColors.black,
-          fontWeight: FontWeight.w400
-        )
+    return Expanded(
+      flex: 1,
+      child: Center(
+        child: FractionallySizedBox(
+          heightFactor: 0.85,
+          widthFactor: 0.85,
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: Text(
+              "${temperature}°",
+              style: const TextStyle(
+                color: CustomColors.black,
+                fontWeight: FontWeight.w400
+              )
+            ),
+          ),
+        ),
       ),
     );
   }
