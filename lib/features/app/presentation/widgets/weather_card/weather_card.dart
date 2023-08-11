@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/features/app/presentation/widgets/card/card_item.dart';
+import 'package:weathque/features/app/presentation/widgets/weather_card/card_item.dart';
 
 class WeatherCard extends StatelessWidget {
   final String windSpeed;
