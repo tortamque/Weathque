@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/header.dart';
-
+import 'package:weathque/features/app/presentation/widgets/misc/headers/header.dart';
+ 
 class WeeklyForecastHeader extends StatelessWidget {
   const WeeklyForecastHeader({super.key});
 

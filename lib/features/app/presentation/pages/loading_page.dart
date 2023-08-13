@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
-import 'package:weathque/features/app/presentation/widgets/appBar/appbar.dart';
+import 'package:weathque/features/app/presentation/widgets/misc/AppBar/appbar.dart';
 
 class LoadingPage extends StatelessWidget {
   const LoadingPage({super.key});

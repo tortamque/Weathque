@@ -3,8 +3,8 @@ import 'package:weathque/core/dependency_injection.dart';
 import 'package:weathque/features/app/domain/entities/current_city_entity.dart';
 import 'package:weathque/features/app/domain/entities/forecast_weather_entity.dart';
 import 'package:weathque/features/app/domain/entities/weather_entity.dart';
-import 'package:weathque/features/app/presentation/widgets/appBar/appbar.dart';
 import 'package:weathque/features/app/presentation/widgets/menu/menu.dart';
+import 'package:weathque/features/app/presentation/widgets/misc/AppBar/appbar.dart';
 
 class WeatherPage extends StatelessWidget {
   final WeatherEntity? weatherEntity;

@@ -4,14 +4,15 @@ import 'package:weathque/core/dependency_injection.dart';
 import 'package:weathque/features/app/domain/entities/forecast_weather_entity.dart';
 import 'package:weathque/features/app/domain/entities/summary_builder.dart';
 import 'package:weathque/features/app/domain/entities/weather_entity.dart';
+import 'package:weathque/features/app/presentation/widgets/condition/condition.dart';
+import 'package:weathque/features/app/presentation/widgets/date/date.dart';
+import 'package:weathque/features/app/presentation/widgets/misc/headers/header.dart';
+import 'package:weathque/features/app/presentation/widgets/misc/headers/weekly_forecast_header.dart';
+import 'package:weathque/features/app/presentation/widgets/summary_text/summary_text.dart';
+import 'package:weathque/features/app/presentation/widgets/temperature/temperature.dart';
 import 'package:weathque/features/app/presentation/widgets/weather_card/weather_card.dart';
 import 'package:weathque/features/app/presentation/widgets/weekly_forecast/weekly_forecast.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/condition.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/header.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/date.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/summary_text.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/temperature.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/weekly_forecast_header.dart';
+
 
 
 class Menu extends StatelessWidget {
