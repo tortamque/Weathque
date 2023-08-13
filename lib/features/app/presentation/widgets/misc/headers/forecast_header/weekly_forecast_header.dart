@@ -32,20 +32,19 @@ class _WeeklyForecastHeaderState extends State<WeeklyForecastHeader> {
       .then((value) => setState(() => isAnimatedWeekly = true));
   }
 
-    void _startAnimationForecast() async{
-    await Future.delayed(const Duration(milliseconds: 2400))
-      .then((value) => setState(() => isAnimatedForecast = true));
+  void _startAnimationForecast() async{
+  await Future.delayed(const Duration(milliseconds: 2400))
+    .then((value) => setState(() => isAnimatedForecast = true));
   }
 
-    void _startAnimationArrow() async{
-    await Future.delayed(const Duration(milliseconds: 2500))
-      .then((value) => setState(() => isAnimatedArrow = true));
+  void _startAnimationArrow() async{
+  await Future.delayed(const Duration(milliseconds: 2500))
+    .then((value) => setState(() => isAnimatedArrow = true));
   }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
-      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
       alignment: Alignment.centerRight,  
       children: [
         Row(
