@@ -35,26 +35,23 @@ class _WeatherCardState extends State<WeatherCard> {
   }
   @override
   Widget build(BuildContext context) {
-    return FractionallySizedBox(
-      widthFactor: 1,
-      child: SizedBox(
-        height: 125,
-        child: Stack(
-          children: [
-            WeatherCardAnimation(
-              isAnimated: isAnimated, 
-              animationDuration: animationDuration, 
-              animationCurve: animationCurve, 
-              positionInitialValue: 20, 
-              opacityInitialValue: 0,
-              child: WeatherCardTemplate(
-                humidity: widget.humidity,
-                visibility: widget.visibility,
-                windSpeed: widget.windSpeed,
-              ),
-            )
-          ],
-        ),
+    return SizedBox(
+      height: 125,
+      child: Stack(
+        children: [
+          WeatherCardAnimation(
+            isAnimated: isAnimated, 
+            animationDuration: animationDuration, 
+            animationCurve: animationCurve, 
+            positionInitialValue: 20, 
+            opacityInitialValue: 0,
+            child: WeatherCardTemplate(
+              humidity: widget.humidity,
+              visibility: widget.visibility,
+              windSpeed: widget.windSpeed,
+            ),
+          )
+        ],
       ),
     );
   }
