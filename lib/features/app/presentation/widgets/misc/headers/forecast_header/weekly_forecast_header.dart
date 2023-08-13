@@ -33,13 +33,13 @@ class _WeeklyForecastHeaderState extends State<WeeklyForecastHeader> {
   }
 
   void _startAnimationForecast() async{
-  await Future.delayed(const Duration(milliseconds: 2400))
-    .then((value) => setState(() => isAnimatedForecast = true));
+    await Future.delayed(const Duration(milliseconds: 2400))
+      .then((value) => setState(() => isAnimatedForecast = true));
   }
 
   void _startAnimationArrow() async{
-  await Future.delayed(const Duration(milliseconds: 2500))
-    .then((value) => setState(() => isAnimatedArrow = true));
+    await Future.delayed(const Duration(milliseconds: 2500))
+      .then((value) => setState(() => isAnimatedArrow = true));
   }
 
   @override

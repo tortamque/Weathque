@@ -3,48 +3,198 @@ import 'package:intl/intl.dart';
 import 'package:weathque/features/app/domain/entities/forecast_weather_entity.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/headers/summary_header/header.dart';
 import 'package:weathque/features/app/presentation/widgets/weekly_forecast/forecast_card.dart';
+import 'package:weathque/features/app/presentation/widgets/weekly_forecast/forecast_card_animation.dart';
 
-class WeeklyForecast extends StatelessWidget {
+class WeeklyForecast extends StatefulWidget {
   final ForecastWeatherEntity? forecastWeatherEntity;
-  final DateTime currentDate = DateTime.now();
 
-  WeeklyForecast({
+  const WeeklyForecast({
     required this.forecastWeatherEntity,
     super.key
   });
 
   @override
+  State<WeeklyForecast> createState() => _WeeklyForecastState();
+}
+
+class _WeeklyForecastState extends State<WeeklyForecast> {
+  final DateTime currentDate = DateTime.now();
+
+  final Duration animationDuration = const Duration(milliseconds: 500);
+  final Curve animationCurve = Curves.easeOutSine;
+  bool isAnimated1 = false;
+  bool isAnimated2 = false;
+  bool isAnimated3 = false;
+  bool isAnimated4 = false;
+  bool isAnimated5 = false;
+
+  @override
+  void initState() {
+    _startAnimation1();
+    _startAnimation2();
+    _startAnimation3();
+    _startAnimation4();
+    _startAnimation5();
+    super.initState();
+  }
+
+  void _startAnimation1() async{
+    await Future.delayed(const Duration(milliseconds: 2700))
+      .then((value) => setState(() => isAnimated1 = true));
+  }
+
+  void _startAnimation2() async{
+    await Future.delayed(const Duration(milliseconds: 2900))
+      .then((value) => setState(() => isAnimated2 = true));
+  }
+
+  void _startAnimation3() async{
+    await Future.delayed(const Duration(milliseconds: 3100))
+      .then((value) => setState(() => isAnimated3 = true));
+  }
+
+  void _startAnimation4() async{
+    await Future.delayed(const Duration(milliseconds: 3300))
+      .then((value) => setState(() => isAnimated4 = true));
+  }
+
+  void _startAnimation5() async{
+    await Future.delayed(const Duration(milliseconds: 3500))
+      .then((value) => setState(() => isAnimated5 = true));
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return forecastWeatherEntity != null ?
+    return widget.forecastWeatherEntity != null ?
     SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          ForecastCard(
-            temperature: forecastWeatherEntity!.list[8 * 0 + 5].main.temp.round().toString(),
-            iconPath: defineIcon(forecastWeatherEntity!.list[8 * 0 + 5].weather[0].id),
-            date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 1))
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                const SizedBox(
+                  height: 110,
+                  width: 67.5,
+                ),
+          
+                ForecastCardAnimation(
+                  curve: animationCurve, 
+                  duration: animationDuration, 
+                  animationField: isAnimated1, 
+                  positionInitialValue: 30, 
+                  opacityInitialValue: 0, 
+                  child: ForecastCard(
+                    temperature: widget.forecastWeatherEntity!.list[8 * 0 + 5].main.temp.round().toString(),
+                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 0 + 5].weather[0].id),
+                    date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 1))
+                  )
+                )
+              ],
+            ),
           ),
-          ForecastCard(
-            temperature: forecastWeatherEntity!.list[8 * 1 + 5].main.temp.round().toString(),
-            iconPath: defineIcon(forecastWeatherEntity!.list[8 * 1 + 5].weather[0].id),
-            date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 2))
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Stack(
+              children: [
+                const SizedBox(
+                  height: 110,
+                  width: 67.5,
+                ),
+
+                ForecastCardAnimation(
+                  curve: animationCurve, 
+                  duration: animationDuration, 
+                  animationField: isAnimated2, 
+                  positionInitialValue: 30, 
+                  opacityInitialValue: 0, 
+                  child: ForecastCard(
+                    temperature: widget.forecastWeatherEntity!.list[8 * 1 + 5].main.temp.round().toString(),
+                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 1 + 5].weather[0].id),
+                    date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 2))
+                  ),
+                ),
+              ],
+            ),
           ),
-          ForecastCard(
-            temperature: forecastWeatherEntity!.list[8 * 2 + 5].main.temp.round().toString(),
-            iconPath: defineIcon(forecastWeatherEntity!.list[8 * 2 + 5].weather[0].id),
-            date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 3))
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Stack(
+              children: [
+                const SizedBox(
+                  height: 110,
+                  width: 67.5,
+                ),
+
+                ForecastCardAnimation(
+                  curve: animationCurve, 
+                  duration: animationDuration, 
+                  animationField: isAnimated3, 
+                  positionInitialValue: 30, 
+                  opacityInitialValue: 0,
+                  child: ForecastCard(
+                    temperature: widget.forecastWeatherEntity!.list[8 * 2 + 5].main.temp.round().toString(),
+                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 2 + 5].weather[0].id),
+                    date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 3))
+                  ),
+                ),
+              ],
+            ),
           ),
-          ForecastCard(
-            temperature: forecastWeatherEntity!.list[8 * 3 + 5].main.temp.round().toString(),
-            iconPath: defineIcon(forecastWeatherEntity!.list[8 * 3 + 5].weather[0].id),
-            date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 4))
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Stack(
+              children: [
+                const SizedBox(
+                  height: 110,
+                  width: 67.5,
+                ),
+
+                ForecastCardAnimation(
+                  curve: animationCurve, 
+                  duration: animationDuration, 
+                  animationField: isAnimated4, 
+                  positionInitialValue: 30, 
+                  opacityInitialValue: 0,
+                  child: ForecastCard(
+                    temperature: widget.forecastWeatherEntity!.list[8 * 3 + 5].main.temp.round().toString(),
+                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 3 + 5].weather[0].id),
+                    date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 4))
+                  ),
+                ),
+              ],
+            ),
           ),
-          ForecastCard(
-            temperature: forecastWeatherEntity!.list[8 * 4 + 5].main.temp.round().toString(),
-            iconPath: defineIcon(forecastWeatherEntity!.list[8 * 4 + 5].weather[0].id),
-            date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 5))
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Stack(
+              children: [
+                const SizedBox(
+                  height: 110,
+                  width: 67.5,
+                ),
+
+                ForecastCardAnimation(
+                  curve: animationCurve, 
+                  duration: animationDuration, 
+                  animationField: isAnimated5, 
+                  positionInitialValue: 30, 
+                  opacityInitialValue: 0,
+                  child: ForecastCard(
+                    temperature: widget.forecastWeatherEntity!.list[8 * 4 + 5].main.temp.round().toString(),
+                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 4 + 5].weather[0].id),
+                    date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 5))
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
