@@ -2,21 +2,17 @@ import 'package:flutter/material.dart';
 
 class SummaryText extends StatelessWidget {
   final String text;
+  final Color color;
 
-  const SummaryText({
-    required this.text,
-    super.key
-  });
+  const SummaryText({super.key, required this.text, required this.color});
 
   @override
   Widget build(BuildContext context) {
-    return FittedBox(
-      fit: BoxFit.contain,
-      child: Text(
-        text,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+    return Text(
+      text,
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        color: color
       ),
     );
   }
