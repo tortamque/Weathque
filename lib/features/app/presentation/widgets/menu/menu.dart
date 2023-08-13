@@ -6,7 +6,7 @@ import 'package:weathque/features/app/domain/entities/summary_builder.dart';
 import 'package:weathque/features/app/domain/entities/weather_entity.dart';
 import 'package:weathque/features/app/presentation/widgets/condition/condition.dart';
 import 'package:weathque/features/app/presentation/widgets/date/date.dart';
-import 'package:weathque/features/app/presentation/widgets/misc/headers/header.dart';
+import 'package:weathque/features/app/presentation/widgets/misc/headers/summary_header/header.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/headers/weekly_forecast_header.dart';
 import 'package:weathque/features/app/presentation/widgets/summary_text/summary_text.dart';
 import 'package:weathque/features/app/presentation/widgets/temperature/temperature.dart';

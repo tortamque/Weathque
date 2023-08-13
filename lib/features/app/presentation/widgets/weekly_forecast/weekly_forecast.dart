@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weathque/features/app/domain/entities/forecast_weather_entity.dart';
-import 'package:weathque/features/app/presentation/widgets/misc/headers/header.dart';
+import 'package:weathque/features/app/presentation/widgets/misc/headers/summary_header/header.dart';
 import 'package:weathque/features/app/presentation/widgets/weekly_forecast/forecast_card.dart';
 
 class WeeklyForecast extends StatelessWidget {
