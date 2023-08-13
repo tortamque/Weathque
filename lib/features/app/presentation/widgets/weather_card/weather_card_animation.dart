@@ -16,14 +16,14 @@ class WeatherCardAnimation extends StatelessWidget {
       duration: animationDuration,
       curve: animationCurve,
       top: !isAnimated ? positionInitialValue : 0,
-      // TODO: Replace hardcoded width with normal width
-      width: 332.3,
+      left: 0,
+      right: 0,
       child: AnimatedOpacity(
         duration: animationDuration,
         curve: animationCurve,
         opacity: !isAnimated ? opacityInitialValue : 1,
-        child: child,
-      ),
+        child: child
+      )
     );
   }
 }
