@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/features/app/presentation/widgets/weather_card/card_item.dart';
+import 'package:weathque/features/app/presentation/widgets/weather_card/weather_card_animation.dart';
+import 'package:weathque/features/app/presentation/widgets/weather_card/weather_card_template.dart';
 
-class WeatherCard extends StatelessWidget {
+class WeatherCard extends StatefulWidget {
   final String windSpeed;
   final String humidity;
   final String visibility;
@@ -14,32 +15,46 @@ class WeatherCard extends StatelessWidget {
   });
 
   @override
+  State<WeatherCard> createState() => _WeatherCardState();
+}
+
+class _WeatherCardState extends State<WeatherCard> {
+  final Duration animationDuration = const Duration(milliseconds: 800);
+  final Curve animationCurve = Curves.easeOutSine;
+  bool isAnimated = false;
+  
+  @override
+  void initState() {
+    _startAnimation();
+    super.initState();
+  }
+
+  void _startAnimation() async{
+    await Future.delayed(const Duration(milliseconds: 2000))
+      .then((value) => setState(() => isAnimated = true));
+  }
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        color: Colors.black
-      ),
-      height: 125,
-      child: Row(
-        children: [
-          CardItem(
-            iconPath: "assets/icons/wind.png",
-            data: "${windSpeed}km/h", 
-            type: "Wind"
+    return Stack(
+      children: [
+        const SizedBox(
+          height: 125,
+          width: double.maxFinite,
+        ),
+
+        WeatherCardAnimation(
+          isAnimated: isAnimated, 
+          animationDuration: animationDuration, 
+          animationCurve: animationCurve, 
+          positionInitialValue: 20, 
+          opacityInitialValue: 0,
+          child: WeatherCardTemplate(
+            humidity: widget.humidity,
+            visibility: widget.visibility,
+            windSpeed: widget.windSpeed,
           ),
-          CardItem(
-            iconPath: "assets/icons/drop.png",
-            data: "${humidity}%", 
-            type: "Humidity"
-          ),
-          CardItem(
-            iconPath: "assets/icons/eye.png",
-            data: "${visibility}km", 
-            type: "Visibility"
-          ),
-        ],
-      ),
+        )
+      ],
     );
   }
 }
