@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
+import 'package:weathque/features/app/presentation/widgets/temperature/degree_animation.dart';
+import 'package:weathque/features/app/presentation/widgets/temperature/temperature_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/temperature/temperature_text.dart';
 
 class Temperature extends StatefulWidget {
@@ -58,35 +60,29 @@ class _TemperatureState extends State<Temperature> {
                       color: Colors.transparent
                     ),
 
-                    AnimatedPositioned(
-                      duration: temperatureAnimationDuration,
-                      curve: temperatureAnimationCurve,
-                      top: !isAnimatedTemperature ? 1.5 : 0,
-                      child: AnimatedOpacity(
-                        duration: temperatureAnimationDuration,
-                        curve: temperatureAnimationCurve,
-                        opacity: !isAnimatedTemperature ? 0 : 1,
-                        child: TemperatureText(
+                    TemperatureAnimation(
+                      isAnimated: isAnimatedTemperature, 
+                      animationDuration: temperatureAnimationDuration, 
+                      animationCurve: temperatureAnimationCurve, 
+                      positionInitialValue: 1.5, 
+                      opacityInitialValue: 0,
+                      child: TemperatureText(
                           text: widget.temperature,
                           color: CustomColors.black,
                         ),
-                      ),
                     ),
 
-                    AnimatedPositioned(
-                      duration: degreeAnimationDuration,
-                      curve: degreeAnimationCurve,
-                      right: !isAnimatedDegree ? 7 : 0,
-                      child: AnimatedOpacity(
-                        duration: degreeAnimationDuration,
-                        curve: degreeAnimationCurve,
-                        opacity: !isAnimatedDegree ? 0 : 1,
-                        child: const TemperatureText(
-                          text: "°",
-                          color: CustomColors.black,
-                        ),
-                      ),
-                    ),
+                    DegreeAnimation(
+                      isAnimated: isAnimatedDegree, 
+                      animationDuration: degreeAnimationDuration, 
+                      animationCurve: degreeAnimationCurve, 
+                      positionInitialValue: 7, 
+                      opacityInitialValue: 0,
+                      child: const TemperatureText(
+                        text: "°",
+                        color: CustomColors.black,
+                      ), 
+                    )
                   ],
                 ),
               ],
