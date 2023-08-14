@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
-import 'package:weathque/features/app/presentation/widgets/misc/headers/forecast_header/arrow_animation.dart';
-import 'package:weathque/features/app/presentation/widgets/misc/headers/forecast_header/weekly_forecast_animation.dart';
+import 'package:weathque/features/app/presentation/widgets/animations/right_animation.dart';
+import 'package:weathque/features/app/presentation/widgets/animations/top_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/headers/summary_header/header_text.dart';
  
 class WeeklyForecastHeader extends StatefulWidget {
@@ -52,7 +52,7 @@ class _WeeklyForecastHeaderState extends State<WeeklyForecastHeader> {
             Stack(
               children: [
                 const HeaderText(text: "Weekly", color: Colors.transparent),
-                WeeklyForecastAnimation(
+                TopAnimation(
                   curve: animationCurve, 
                   duration: animationDurationText, 
                   animationField: isAnimatedWeekly, 
@@ -66,7 +66,7 @@ class _WeeklyForecastHeaderState extends State<WeeklyForecastHeader> {
             Stack(
               children: [
                 const HeaderText(text: " forecast", color: Colors.transparent),
-                WeeklyForecastAnimation(
+                TopAnimation(
                   curve: animationCurve, 
                   duration: animationDurationText, 
                   animationField: isAnimatedForecast, 
@@ -86,7 +86,7 @@ class _WeeklyForecastHeaderState extends State<WeeklyForecastHeader> {
               width: double.infinity,
             ),
 
-            ArrowAnimation(
+            RightAnimation(
               curve: animationCurve, 
               duration: animationDurationArrow, 
               animationField: isAnimatedArrow, 

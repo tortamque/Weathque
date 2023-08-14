@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
-import 'package:weathque/features/app/presentation/widgets/temperature/degree_animation.dart';
-import 'package:weathque/features/app/presentation/widgets/temperature/temperature_animation.dart';
+import 'package:weathque/features/app/presentation/widgets/animations/right_animation.dart';
+import 'package:weathque/features/app/presentation/widgets/animations/top_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/temperature/temperature_text.dart';
 
 class Temperature extends StatefulWidget {
@@ -60,10 +60,10 @@ class _TemperatureState extends State<Temperature> {
                       color: Colors.transparent
                     ),
 
-                    TemperatureAnimation(
-                      isAnimated: isAnimatedTemperature, 
-                      animationDuration: temperatureAnimationDuration, 
-                      animationCurve: temperatureAnimationCurve, 
+                    TopAnimation(
+                      animationField: isAnimatedTemperature, 
+                      duration: temperatureAnimationDuration, 
+                      curve: temperatureAnimationCurve, 
                       positionInitialValue: 1.5, 
                       opacityInitialValue: 0,
                       child: TemperatureText(
@@ -72,10 +72,10 @@ class _TemperatureState extends State<Temperature> {
                         ),
                     ),
 
-                    DegreeAnimation(
-                      isAnimated: isAnimatedDegree, 
-                      animationDuration: degreeAnimationDuration, 
-                      animationCurve: degreeAnimationCurve, 
+                    RightAnimation(
+                      animationField: isAnimatedDegree, 
+                      duration: degreeAnimationDuration, 
+                      curve: degreeAnimationCurve, 
                       positionInitialValue: 7, 
                       opacityInitialValue: 0,
                       child: const TemperatureText(

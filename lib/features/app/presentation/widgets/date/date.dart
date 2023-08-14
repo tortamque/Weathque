@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
-import 'package:weathque/features/app/presentation/widgets/date/date_animation.dart';
+import 'package:weathque/features/app/presentation/widgets/animations/top_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/date/date_card.dart';
 
 class Date extends StatefulWidget {
@@ -49,7 +49,7 @@ class _DateState extends State<Date> {
             text: widget.date,
           ),
 
-          DateAnimation(
+          TopAnimation(
             curve: animationCurve, 
             duration: animationDuration, 
             animationField: isContainerAnimated, 
@@ -62,7 +62,7 @@ class _DateState extends State<Date> {
             ),
           ),
 
-          DateAnimation(
+          TopAnimation(
             curve: animationCurve, 
             duration: animationDuration, 
             animationField: isTextAnimated, 

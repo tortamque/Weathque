@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
-import 'package:weathque/features/app/presentation/widgets/summary_text/summary_animation.dart';
+import 'package:weathque/features/app/presentation/widgets/animations/top_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/summary_text/summary_text.dart';
 
 // ignore: must_be_immutable
@@ -63,7 +63,7 @@ class _SummaryState extends State<Summary> {
           Stack(
             children: [
               SummaryText(text: widget._line1, color: Colors.transparent),
-              SummaryAnimation(
+              TopAnimation(
                 curve: animationCurve, 
                 duration: animationDuration, 
                 animationField: isAnimatedLine1, 
@@ -76,7 +76,7 @@ class _SummaryState extends State<Summary> {
           Stack(
             children: [
               SummaryText(text: widget._line2, color: Colors.transparent),
-              SummaryAnimation(
+              TopAnimation(
                 curve: animationCurve, 
                 duration: animationDuration, 
                 animationField: isAnimatedLine2, 
@@ -89,7 +89,7 @@ class _SummaryState extends State<Summary> {
           Stack(
             children: [
               SummaryText(text: widget._line3, color: Colors.transparent),
-              SummaryAnimation(
+              TopAnimation(
                 curve: animationCurve, 
                 duration: animationDuration, 
                 animationField: isAnimatedLine3, 

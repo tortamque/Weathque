@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weathque/features/app/domain/entities/forecast_weather_entity.dart';
+import 'package:weathque/features/app/presentation/widgets/animations/top_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/headers/summary_header/header.dart';
 import 'package:weathque/features/app/presentation/widgets/weekly_forecast/forecast_card.dart';
-import 'package:weathque/features/app/presentation/widgets/weekly_forecast/forecast_card_animation.dart';
 
 class WeeklyForecast extends StatefulWidget {
   final ForecastWeatherEntity? forecastWeatherEntity;
@@ -81,7 +81,7 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   width: 67.5,
                 ),
           
-                ForecastCardAnimation(
+                TopAnimation(
                   curve: animationCurve, 
                   duration: animationDuration, 
                   animationField: isAnimated1, 
@@ -106,7 +106,7 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   width: 67.5,
                 ),
 
-                ForecastCardAnimation(
+                TopAnimation(
                   curve: animationCurve, 
                   duration: animationDuration, 
                   animationField: isAnimated2, 
@@ -131,7 +131,7 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   width: 67.5,
                 ),
 
-                ForecastCardAnimation(
+                TopAnimation(
                   curve: animationCurve, 
                   duration: animationDuration, 
                   animationField: isAnimated3, 
@@ -156,7 +156,7 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   width: 67.5,
                 ),
 
-                ForecastCardAnimation(
+                TopAnimation(
                   curve: animationCurve, 
                   duration: animationDuration, 
                   animationField: isAnimated4, 
@@ -181,7 +181,7 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   width: 67.5,
                 ),
 
-                ForecastCardAnimation(
+                TopAnimation(
                   curve: animationCurve, 
                   duration: animationDuration, 
                   animationField: isAnimated5, 

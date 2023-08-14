@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/features/app/presentation/widgets/weather_card/weather_card_animation.dart';
+import 'package:weathque/features/app/presentation/widgets/animations/top_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/weather_card/weather_card_template.dart';
 
 class WeatherCard extends StatefulWidget {
@@ -39,10 +39,10 @@ class _WeatherCardState extends State<WeatherCard> {
       height: 125,
       child: Stack(
         children: [
-          WeatherCardAnimation(
-            isAnimated: isAnimated, 
-            animationDuration: animationDuration, 
-            animationCurve: animationCurve, 
+          TopAnimation(
+            animationField: isAnimated, 
+            duration: animationDuration, 
+            curve: animationCurve, 
             positionInitialValue: 20, 
             opacityInitialValue: 0,
             child: WeatherCardTemplate(

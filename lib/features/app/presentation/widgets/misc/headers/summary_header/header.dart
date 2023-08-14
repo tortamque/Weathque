@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
-import 'package:weathque/features/app/presentation/widgets/misc/headers/summary_header/header_animation.dart';
+import 'package:weathque/features/app/presentation/widgets/animations/top_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/headers/summary_header/header_text.dart';
 
 class Header extends StatefulWidget {
@@ -40,7 +40,7 @@ class _HeaderState extends State<Header> {
           color: Colors.transparent
         ),
 
-        HeaderAnimation(
+        TopAnimation(
           curve: animationCurve, 
           duration: animationDuration, 
           animationField: isAnimated, 

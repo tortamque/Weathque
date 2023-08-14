@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
-import 'package:weathque/features/app/presentation/widgets/condition/condition_animation.dart';
+import 'package:weathque/features/app/presentation/widgets/animations/top_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/condition/condition_text.dart';
 
 class Condition extends StatefulWidget {
@@ -43,10 +43,10 @@ class _ConditionState extends State<Condition> {
               color: Colors.transparent,
             ),
 
-            ConditionAnimation(
-              isAnimated: isAnimated, 
-              animationDuration: animationDuration, 
-              animationCurve: animationCurve, 
+            TopAnimation(
+              animationField: isAnimated, 
+              duration: animationDuration, 
+              curve: animationCurve, 
               positionInitialValue: 20, 
               opacityInitialValue: 0,
               child: ConditionText(
