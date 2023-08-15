@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/AppBar/appbar.dart';
 
 class LoadingPage extends StatelessWidget {
@@ -14,7 +13,7 @@ class LoadingPage extends StatelessWidget {
           width: 100,
           height: 100,
           child: CircularProgressIndicator(
-            color: CustomColors.black,
+            color: Colors.black,
             strokeWidth: 6.0,
           ),
         ),

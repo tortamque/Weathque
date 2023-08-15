@@ -68,7 +68,7 @@ class _TemperatureState extends State<Temperature> {
                       opacityInitialValue: 0,
                       child: TemperatureText(
                           text: widget.temperature,
-                          color: CustomColors.black,
+                          color: Colors.black
                         ),
                     ),
 
@@ -80,7 +80,7 @@ class _TemperatureState extends State<Temperature> {
                       opacityInitialValue: 0,
                       child: const TemperatureText(
                         text: "°",
-                        color: CustomColors.black,
+                        color: Colors.black
                       ), 
                     )
                   ],

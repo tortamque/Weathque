@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/features/app/presentation/widgets/animations/top_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/headers/summary_header/header_text.dart';
 
@@ -48,7 +47,7 @@ class _HeaderState extends State<Header> {
           opacityInitialValue: 0,
           child: HeaderText(
             text: widget.text, 
-            color: CustomColors.black
+            color: Colors.black
           ),
         )
       ],

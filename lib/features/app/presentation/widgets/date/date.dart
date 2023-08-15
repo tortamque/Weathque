@@ -56,7 +56,7 @@ class _DateState extends State<Date> {
             positionInitialValue: MediaQuery.of(context).size.height/40, 
             opacityInitialValue: 0,
             child: DateCard(
-              backgroundColor: CustomColors.black,
+              backgroundColor: Colors.black,
               textColor: Colors.transparent,
               text: widget.date,
             ),
