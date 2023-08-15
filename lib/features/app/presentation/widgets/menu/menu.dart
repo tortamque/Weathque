@@ -4,14 +4,15 @@ import 'package:weathque/core/dependency_injection.dart';
 import 'package:weathque/features/app/domain/entities/forecast_weather_entity.dart';
 import 'package:weathque/features/app/domain/entities/summary_builder.dart';
 import 'package:weathque/features/app/domain/entities/weather_entity.dart';
-import 'package:weathque/features/app/presentation/widgets/card/weather_card.dart';
-import 'package:weathque/features/app/presentation/widgets/scrollable/weekly_forecast.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/condition.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/header.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/date.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/summary_text.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/temperature.dart';
-import 'package:weathque/features/app/presentation/widgets/texts/weekly_forecast_header.dart';
+import 'package:weathque/features/app/presentation/widgets/condition/condition.dart';
+import 'package:weathque/features/app/presentation/widgets/date/date.dart';
+import 'package:weathque/features/app/presentation/widgets/misc/headers/summary_header/header.dart';
+import 'package:weathque/features/app/presentation/widgets/misc/headers/forecast_header/weekly_forecast_header.dart';
+import 'package:weathque/features/app/presentation/widgets/summary_text/summary.dart';
+import 'package:weathque/features/app/presentation/widgets/temperature/temperature.dart';
+import 'package:weathque/features/app/presentation/widgets/weather_card/weather_card.dart';
+import 'package:weathque/features/app/presentation/widgets/weekly_forecast/weekly_forecast.dart';
+
 
 
 class Menu extends StatelessWidget {
@@ -67,7 +68,7 @@ class Menu extends StatelessWidget {
           Condition(condition: condition),
           Temperature(temperature: temperature),
           const Header(text: "Daily Summary"),
-          SummaryText(text: summary),
+          Summary(text: summary),
           const SizedBox(height: 25),
           WeatherCard(
             humidity: humidity,

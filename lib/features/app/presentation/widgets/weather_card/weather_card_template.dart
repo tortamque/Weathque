@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/features/app/presentation/widgets/card/card_item.dart';
+import 'package:weathque/features/app/presentation/widgets/weather_card/card_item.dart';
 
-class WeatherCard extends StatelessWidget {
+class WeatherCardTemplate extends StatelessWidget {
   final String windSpeed;
   final String humidity;
   final String visibility;
-
-  const WeatherCard({
-    super.key, 
-    required this.windSpeed, 
-    required this.humidity, 
-    required this.visibility
-  });
+  
+  const WeatherCardTemplate({super.key, required this.windSpeed, required this.humidity, required this.visibility});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +16,7 @@ class WeatherCard extends StatelessWidget {
         color: Colors.black
       ),
       height: 125,
+      width: double.maxFinite,
       child: Row(
         children: [
           CardItem(
