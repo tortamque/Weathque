@@ -1,34 +1,38 @@
-class Node<T> {
-  late T data;
-  Node<T>? next;
-  Node<T>? prev;
+import 'package:weathque/config/theme/custom_colors.dart';
+import 'package:weathque/features/app/domain/entities/cities_enum.dart';
 
-  Node(this.data);
+class Node {
+  late City city;
+  late CustomColors color;
+  Node? next;
+  Node? prev;
+
+  Node(this.city, this.color);
 }
 
-class CircularDoublyLinkedList<T> {
-  Node<T>? head;
-  Node<T>? currentPosition;
+class CircularDoublyLinkedList {
+  Node? head;
+  Node? currentPosition;
 
   CircularDoublyLinkedList();
 
-  CircularDoublyLinkedList.fromList(List<T> values) {
-    for (T value in values) {
-      insert(value);
+  CircularDoublyLinkedList.fromList(List<City> cities, List<CustomColors> colors) {
+    for (int i = 0; i < cities.length; i++) {
+      insert(cities[i], colors[i]);
     }
     if (head != null) {
       currentPosition = head;
     }
   }
 
-  void insert(T data) {
-    Node<T> newNode = Node<T>(data);
+  void insert(City city, CustomColors color) {
+    Node newNode = Node(city, color);
     if (head == null) {
       head = newNode;
       newNode.next = newNode;
       newNode.prev = newNode;
     } else {
-      Node<T> lastNode = head!.prev!;
+      Node lastNode = head!.prev!;
       newNode.next = head;
       newNode.prev = lastNode;
       head!.prev = newNode;
@@ -52,7 +56,7 @@ class CircularDoublyLinkedList<T> {
     }
   }
 
-  Node<T>? getCurrent() {
+  Node? getCurrent() {
     return currentPosition;
   }
 
@@ -62,9 +66,9 @@ class CircularDoublyLinkedList<T> {
       return;
     }
 
-    Node<T> current = head!;
+    Node current = head!;
     do {
-      print(current.data);
+      print("City: ${current.city.name}, Color: ${current.color}");
       current = current.next!;
     } while (current != head);
   }
