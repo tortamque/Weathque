@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:weathque/config/theme/app_themes.dart';
 import 'package:weathque/core/dependency_injection.dart';
 import 'package:weathque/features/app/domain/entities/current_city_entity.dart';
@@ -45,9 +46,22 @@ class MyApp extends StatelessWidget {
                       return const LoadingPage();
                     }
                     if(forecastWeatherState is GetWeatherForecastDone){
-                      return WeatherPage(
-                        weatherEntity: currentWeatherState.weatherEntity,
-                        forecastWeatherEntity: forecastWeatherState.forecastWeatherEntity,
+                      return CarouselSlider(
+                        onSlideChanged: (value) {
+                          print(value);
+                        },
+                        slideTransform: const CubeTransform(),
+                        unlimitedMode: true,
+                        children: [
+                          WeatherPage(
+                            weatherEntity: currentWeatherState.weatherEntity,
+                            forecastWeatherEntity: forecastWeatherState.forecastWeatherEntity,
+                          ),
+                          WeatherPage(
+                            weatherEntity: currentWeatherState.weatherEntity,
+                            forecastWeatherEntity: forecastWeatherState.forecastWeatherEntity,
+                          )
+                        ]
                       );
                     }
                     return const SizedBox();
