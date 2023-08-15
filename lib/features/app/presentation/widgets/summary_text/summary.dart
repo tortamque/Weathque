@@ -67,7 +67,7 @@ class _SummaryState extends State<Summary> {
                 curve: animationCurve, 
                 duration: animationDuration, 
                 animationField: isAnimatedLine1, 
-                positionInitialValue: 20, 
+                positionInitialValue: MediaQuery.of(context).size.height/40, 
                 opacityInitialValue: 0, 
                 child: SummaryText(text: widget._line1, color: CustomColors.black)
               )
@@ -80,7 +80,7 @@ class _SummaryState extends State<Summary> {
                 curve: animationCurve, 
                 duration: animationDuration, 
                 animationField: isAnimatedLine2, 
-                positionInitialValue: 20, 
+                positionInitialValue: MediaQuery.of(context).size.height/40, 
                 opacityInitialValue: 0, 
                 child: SummaryText(text: widget._line2, color: CustomColors.black)
               )
@@ -93,7 +93,7 @@ class _SummaryState extends State<Summary> {
                 curve: animationCurve, 
                 duration: animationDuration, 
                 animationField: isAnimatedLine3, 
-                positionInitialValue: 20, 
+                positionInitialValue: MediaQuery.of(context).size.height/40, 
                 opacityInitialValue: 0, 
                 child: SummaryText(text: widget._line3, color: CustomColors.black)
               )

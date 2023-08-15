@@ -56,7 +56,7 @@ class _WeeklyForecastHeaderState extends State<WeeklyForecastHeader> {
                   curve: animationCurve, 
                   duration: animationDurationText, 
                   animationField: isAnimatedWeekly, 
-                  positionInitialValue: 20, 
+                  positionInitialValue: MediaQuery.of(context).size.height/40, 
                   opacityInitialValue: 0, 
                   child: const HeaderText(text: "Weekly", color: CustomColors.black)
                 )
@@ -70,7 +70,7 @@ class _WeeklyForecastHeaderState extends State<WeeklyForecastHeader> {
                   curve: animationCurve, 
                   duration: animationDurationText, 
                   animationField: isAnimatedForecast, 
-                  positionInitialValue: 20, 
+                  positionInitialValue: MediaQuery.of(context).size.height/40, 
                   opacityInitialValue: 0, 
                   child: const HeaderText(text: " forecast", color: CustomColors.black),
                 )
@@ -90,7 +90,7 @@ class _WeeklyForecastHeaderState extends State<WeeklyForecastHeader> {
               curve: animationCurve, 
               duration: animationDurationArrow, 
               animationField: isAnimatedArrow, 
-              positionInitialValue: 100, 
+              positionInitialValue: MediaQuery.of(context).size.width/3.75, 
               opacityInitialValue: 0, 
               child: Image.asset("assets/icons/arrow.png", height: 17.5),
             )

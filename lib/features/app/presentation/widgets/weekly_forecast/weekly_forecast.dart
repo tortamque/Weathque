@@ -44,22 +44,22 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
   }
 
   void _startAnimation2() async{
-    await Future.delayed(const Duration(milliseconds: 2900))
+    await Future.delayed(const Duration(milliseconds: 2850))
       .then((value) => setState(() => isAnimated2 = true));
   }
 
   void _startAnimation3() async{
-    await Future.delayed(const Duration(milliseconds: 3100))
+    await Future.delayed(const Duration(milliseconds: 3000))
       .then((value) => setState(() => isAnimated3 = true));
   }
 
   void _startAnimation4() async{
-    await Future.delayed(const Duration(milliseconds: 3300))
+    await Future.delayed(const Duration(milliseconds: 3150))
       .then((value) => setState(() => isAnimated4 = true));
   }
 
   void _startAnimation5() async{
-    await Future.delayed(const Duration(milliseconds: 3500))
+    await Future.delayed(const Duration(milliseconds: 3300))
       .then((value) => setState(() => isAnimated5 = true));
   }
 
@@ -85,7 +85,7 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   curve: animationCurve, 
                   duration: animationDuration, 
                   animationField: isAnimated1, 
-                  positionInitialValue: 30, 
+                  positionInitialValue: MediaQuery.of(context).size.height/26, 
                   opacityInitialValue: 0, 
                   child: ForecastCard(
                     temperature: widget.forecastWeatherEntity!.list[8 * 0 + 5].main.temp.round().toString(),
@@ -110,7 +110,7 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   curve: animationCurve, 
                   duration: animationDuration, 
                   animationField: isAnimated2, 
-                  positionInitialValue: 30, 
+                  positionInitialValue: MediaQuery.of(context).size.height/26, 
                   opacityInitialValue: 0, 
                   child: ForecastCard(
                     temperature: widget.forecastWeatherEntity!.list[8 * 1 + 5].main.temp.round().toString(),
@@ -135,7 +135,7 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   curve: animationCurve, 
                   duration: animationDuration, 
                   animationField: isAnimated3, 
-                  positionInitialValue: 30, 
+                  positionInitialValue: MediaQuery.of(context).size.height/26, 
                   opacityInitialValue: 0,
                   child: ForecastCard(
                     temperature: widget.forecastWeatherEntity!.list[8 * 2 + 5].main.temp.round().toString(),
@@ -160,7 +160,7 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   curve: animationCurve, 
                   duration: animationDuration, 
                   animationField: isAnimated4, 
-                  positionInitialValue: 30, 
+                  positionInitialValue: MediaQuery.of(context).size.height/26, 
                   opacityInitialValue: 0,
                   child: ForecastCard(
                     temperature: widget.forecastWeatherEntity!.list[8 * 3 + 5].main.temp.round().toString(),
@@ -185,7 +185,7 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   curve: animationCurve, 
                   duration: animationDuration, 
                   animationField: isAnimated5, 
-                  positionInitialValue: 30, 
+                  positionInitialValue: MediaQuery.of(context).size.height/26, 
                   opacityInitialValue: 0,
                   child: ForecastCard(
                     temperature: widget.forecastWeatherEntity!.list[8 * 4 + 5].main.temp.round().toString(),
@@ -199,8 +199,15 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
         ],
       ),
     )
-    : const Center(
-      child: Header(text: "Weekly forecast data isn't available"),
+    : Center(
+      child: TopAnimation(
+        curve: animationCurve, 
+        duration: animationDuration, 
+        animationField: isAnimated5, 
+        positionInitialValue: MediaQuery.of(context).size.height/26, 
+        opacityInitialValue: 0,
+        child: const Header(text: "Weekly forecast data isn't available")
+      ),
     );
   }
 

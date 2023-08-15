@@ -64,7 +64,7 @@ class _TemperatureState extends State<Temperature> {
                       animationField: isAnimatedTemperature, 
                       duration: temperatureAnimationDuration, 
                       curve: temperatureAnimationCurve, 
-                      positionInitialValue: 1.5, 
+                      positionInitialValue: MediaQuery.of(context).size.height/500, 
                       opacityInitialValue: 0,
                       child: TemperatureText(
                           text: widget.temperature,
@@ -76,7 +76,7 @@ class _TemperatureState extends State<Temperature> {
                       animationField: isAnimatedDegree, 
                       duration: degreeAnimationDuration, 
                       curve: degreeAnimationCurve, 
-                      positionInitialValue: 7, 
+                      positionInitialValue: MediaQuery.of(context).size.width/55, 
                       opacityInitialValue: 0,
                       child: const TemperatureText(
                         text: "°",

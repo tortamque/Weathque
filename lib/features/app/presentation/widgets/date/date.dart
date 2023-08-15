@@ -53,7 +53,7 @@ class _DateState extends State<Date> {
             curve: animationCurve, 
             duration: animationDuration, 
             animationField: isContainerAnimated, 
-            positionInitialValue: 20, 
+            positionInitialValue: MediaQuery.of(context).size.height/40, 
             opacityInitialValue: 0,
             child: DateCard(
               backgroundColor: CustomColors.black,

@@ -44,7 +44,7 @@ class _HeaderState extends State<Header> {
           curve: animationCurve, 
           duration: animationDuration, 
           animationField: isAnimated, 
-          positionInitialValue: 20, 
+          positionInitialValue: MediaQuery.of(context).size.height/40, 
           opacityInitialValue: 0,
           child: HeaderText(
             text: widget.text, 

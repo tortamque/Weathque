@@ -43,7 +43,7 @@ class _WeatherCardState extends State<WeatherCard> {
             animationField: isAnimated, 
             duration: animationDuration, 
             curve: animationCurve, 
-            positionInitialValue: 20, 
+            positionInitialValue: MediaQuery.of(context).size.height/40, 
             opacityInitialValue: 0,
             child: WeatherCardTemplate(
               humidity: widget.humidity,
