@@ -75,8 +75,8 @@ class _DateState extends State<Date> {
               ),
               child: Text(
                 widget.date,
-                style: const TextStyle(
-                  color: CustomColors.yellow,
+                style: TextStyle(
+                  color: CustomColors.yellow.color,
                 ),
               ),
             )

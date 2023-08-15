@@ -26,20 +26,20 @@ class CardItem extends StatelessWidget {
               iconPath, 
               height: 40, 
               width: 40, 
-              color: CustomColors.yellow
+              color: CustomColors.yellow.color
             ),
             Text(
               data,
-              style: const TextStyle(
-                color: CustomColors.yellow,
+              style: TextStyle(
+                color: CustomColors.yellow.color,
                 fontWeight: FontWeight.bold,
                 fontSize: 16
               ),
             ),
             Text(
               type,
-              style: const TextStyle(
-                color: CustomColors.yellow,
+              style: TextStyle(
+                color: CustomColors.yellow.color,
                 fontSize: 12
               ),
             ),
