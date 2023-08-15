@@ -27,7 +27,7 @@ class _ConditionState extends State<Condition> {
   }
 
   void _startAnimation() async{
-    await Future.delayed(const Duration(milliseconds: 600))
+    await Future.delayed(const Duration(milliseconds: 500))
       .then((value) => setState(() => isAnimated = true));
   }
 
