@@ -3,7 +3,7 @@ class ForecastWeatherEntity {
   int message;
   int cnt;
   List<WeatherData> list;
-  City city;
+  ForecastCity city;
 
   ForecastWeatherEntity({
     required this.cod,
@@ -157,7 +157,7 @@ class Sys {
   }
 }
 
-class City {
+class ForecastCity {
   int id;
   String name;
   Coord coord;
@@ -167,7 +167,7 @@ class City {
   int sunrise;
   int sunset;
 
-  City({
+  ForecastCity({
     required this.id,
     required this.name,
     required this.coord,
@@ -178,8 +178,8 @@ class City {
     required this.sunset,
   });
 
-  factory City.fromJson(Map<String, dynamic> json) {
-    return City(
+  factory ForecastCity.fromJson(Map<String, dynamic> json) {
+    return ForecastCity(
       id: json['id'],
       name: json['name'],
       coord: Coord.fromJson(json['coord']),

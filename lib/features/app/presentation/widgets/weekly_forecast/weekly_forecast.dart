@@ -88,8 +88,8 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   positionInitialValue: MediaQuery.of(context).size.height/26, 
                   opacityInitialValue: 0, 
                   child: ForecastCard(
-                    temperature: widget.forecastWeatherEntity!.list[8 * 0 + 5].main.temp.round().toString(),
-                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 0 + 5].weather[0].id),
+                    temperature: widget.forecastWeatherEntity!.list[8 * 0 + 0].main.temp.round().toString(),
+                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 0 + 6].weather[0].id),
                     date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 1))
                   )
                 )
@@ -113,8 +113,8 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   positionInitialValue: MediaQuery.of(context).size.height/26, 
                   opacityInitialValue: 0, 
                   child: ForecastCard(
-                    temperature: widget.forecastWeatherEntity!.list[8 * 1 + 5].main.temp.round().toString(),
-                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 1 + 5].weather[0].id),
+                    temperature: widget.forecastWeatherEntity!.list[8 * 1 + 6].main.temp.round().toString(),
+                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 1 + 6].weather[0].id),
                     date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 2))
                   ),
                 ),
@@ -138,8 +138,8 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   positionInitialValue: MediaQuery.of(context).size.height/26, 
                   opacityInitialValue: 0,
                   child: ForecastCard(
-                    temperature: widget.forecastWeatherEntity!.list[8 * 2 + 5].main.temp.round().toString(),
-                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 2 + 5].weather[0].id),
+                    temperature: widget.forecastWeatherEntity!.list[8 * 2 + 6].main.temp.round().toString(),
+                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 2 + 6].weather[0].id),
                     date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 3))
                   ),
                 ),
@@ -163,8 +163,8 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   positionInitialValue: MediaQuery.of(context).size.height/26, 
                   opacityInitialValue: 0,
                   child: ForecastCard(
-                    temperature: widget.forecastWeatherEntity!.list[8 * 3 + 5].main.temp.round().toString(),
-                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 3 + 5].weather[0].id),
+                    temperature: widget.forecastWeatherEntity!.list[8 * 3 + 6].main.temp.round().toString(),
+                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 3 + 6].weather[0].id),
                     date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 4))
                   ),
                 ),
@@ -188,8 +188,8 @@ class _WeeklyForecastState extends State<WeeklyForecast> {
                   positionInitialValue: MediaQuery.of(context).size.height/26, 
                   opacityInitialValue: 0,
                   child: ForecastCard(
-                    temperature: widget.forecastWeatherEntity!.list[8 * 4 + 5].main.temp.round().toString(),
-                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 4 + 5].weather[0].id),
+                    temperature: widget.forecastWeatherEntity!.list[8 * 4 + 6].main.temp.round().toString(),
+                    iconPath: defineIcon(widget.forecastWeatherEntity!.list[8 * 4 + 6].weather[0].id),
                     date: DateFormat('dd MMM').format(DateTime(currentDate.year, currentDate.month, currentDate.day + 5))
                   ),
                 ),

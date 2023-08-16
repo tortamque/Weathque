@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/features/app/presentation/widgets/animations/top_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/summary_text/summary_text.dart';
 
@@ -69,7 +68,7 @@ class _SummaryState extends State<Summary> {
                 animationField: isAnimatedLine1, 
                 positionInitialValue: MediaQuery.of(context).size.height/40, 
                 opacityInitialValue: 0, 
-                child: SummaryText(text: widget._line1, color: CustomColors.black)
+                child: SummaryText(text: widget._line1, color: Colors.black)
               )
             ],
           ),
@@ -82,7 +81,7 @@ class _SummaryState extends State<Summary> {
                 animationField: isAnimatedLine2, 
                 positionInitialValue: MediaQuery.of(context).size.height/40, 
                 opacityInitialValue: 0, 
-                child: SummaryText(text: widget._line2, color: CustomColors.black)
+                child: SummaryText(text: widget._line2, color: Colors.black)
               )
             ],
           ),
@@ -95,7 +94,7 @@ class _SummaryState extends State<Summary> {
                 animationField: isAnimatedLine3, 
                 positionInitialValue: MediaQuery.of(context).size.height/40, 
                 opacityInitialValue: 0, 
-                child: SummaryText(text: widget._line3, color: CustomColors.black)
+                child: SummaryText(text: widget._line3, color: Colors.black)
               )
             ],
           ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/features/app/presentation/widgets/animations/top_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/condition/condition_text.dart';
 
@@ -51,7 +50,7 @@ class _ConditionState extends State<Condition> {
               opacityInitialValue: 0,
               child: ConditionText(
                 text: widget.condition,
-                color: CustomColors.black,
+                color: Colors.black
               ),
             )
           ],

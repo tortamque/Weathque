@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/features/app/presentation/widgets/animations/top_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/date/date_card.dart';
 
 class Date extends StatefulWidget {
   final String date;
+  final Color color;
 
   const Date({
     required this.date, 
+    required this.color,
     super.key
   });
 
@@ -56,7 +57,7 @@ class _DateState extends State<Date> {
             positionInitialValue: MediaQuery.of(context).size.height/40, 
             opacityInitialValue: 0,
             child: DateCard(
-              backgroundColor: CustomColors.black,
+              backgroundColor: Colors.black,
               textColor: Colors.transparent,
               text: widget.date,
             ),
@@ -75,8 +76,8 @@ class _DateState extends State<Date> {
               ),
               child: Text(
                 widget.date,
-                style: const TextStyle(
-                  color: CustomColors.yellow,
+                style: TextStyle(
+                  color: widget.color,
                 ),
               ),
             )

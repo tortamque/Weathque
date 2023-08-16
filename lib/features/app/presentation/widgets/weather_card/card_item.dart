@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/config/theme/custom_colors.dart';
 
 class CardItem extends StatelessWidget {
   final String iconPath;
   final String data;
   final String type;
+  final Color color;
 
   const CardItem({
     required this.iconPath,
     required this.data,
     required this.type,
+    required this.color,
     super.key
   });
 
@@ -26,20 +27,20 @@ class CardItem extends StatelessWidget {
               iconPath, 
               height: 40, 
               width: 40, 
-              color: CustomColors.yellow
+              color: color
             ),
             Text(
               data,
-              style: const TextStyle(
-                color: CustomColors.yellow,
+              style: TextStyle(
+                color: color,
                 fontWeight: FontWeight.bold,
                 fontSize: 16
               ),
             ),
             Text(
               type,
-              style: const TextStyle(
-                color: CustomColors.yellow,
+              style: TextStyle(
+                color: color,
                 fontSize: 12
               ),
             ),

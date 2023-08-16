@@ -1,5 +1,6 @@
 import 'package:retrofit/retrofit.dart';
 import 'package:weathque/core/constants.dart';
+// ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
 import 'package:weathque/features/app/data/models/forecast_weather_model.dart';
 import 'package:weathque/features/app/data/models/weather_model.dart';

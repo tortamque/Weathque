@@ -3,9 +3,5 @@ abstract class GetCurrentWeatherEvent{
 }
 
 class GetCurrentWeather extends GetCurrentWeatherEvent{
-  final String cityName;
-
-  const GetCurrentWeather({
-    required this.cityName
-  });
+  const GetCurrentWeather();
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/features/app/presentation/widgets/animations/right_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/animations/top_animation.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/headers/summary_header/header_text.dart';
@@ -58,7 +57,7 @@ class _WeeklyForecastHeaderState extends State<WeeklyForecastHeader> {
                   animationField: isAnimatedWeekly, 
                   positionInitialValue: MediaQuery.of(context).size.height/40, 
                   opacityInitialValue: 0, 
-                  child: const HeaderText(text: "Weekly", color: CustomColors.black)
+                  child: const HeaderText(text: "Weekly", color: Colors.black)
                 )
               ],
             ),
@@ -72,7 +71,7 @@ class _WeeklyForecastHeaderState extends State<WeeklyForecastHeader> {
                   animationField: isAnimatedForecast, 
                   positionInitialValue: MediaQuery.of(context).size.height/40, 
                   opacityInitialValue: 0, 
-                  child: const HeaderText(text: " forecast", color: CustomColors.black),
+                  child: const HeaderText(text: " forecast", color: Colors.black),
                 )
               ],
             ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/config/theme/custom_colors.dart';
 
 class ForecastCard extends StatelessWidget {
   final String temperature;
@@ -31,7 +30,7 @@ class ForecastCard extends StatelessWidget {
           Text(
             "${temperature}°",
             style: const TextStyle(
-              color: CustomColors.black,
+              color: Colors.black,
               fontWeight: FontWeight.bold,
               fontSize: 16
             ),
@@ -43,8 +42,8 @@ class ForecastCard extends StatelessWidget {
           ),
           Text(
             date,
-            style: TextStyle(
-              color: CustomColors.black,
+            style: const TextStyle(
+              color: Colors.black,
               fontWeight: FontWeight.bold,
               fontSize: 12
             ),
