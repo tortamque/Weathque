@@ -16,11 +16,11 @@ import 'package:weathque/features/app/presentation/pages/weather_page.dart';
 import 'features/app/domain/entities/cities_enum.dart';
 void main() {
   initializeDependencies();
-  runApp(const MyApp());
+  runApp(const WeathqueApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class WeathqueApp extends StatelessWidget {
+  const WeathqueApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
