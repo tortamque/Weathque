@@ -56,6 +56,7 @@ class MyApp extends StatelessWidget {
                               weatherEntity: currentWeatherState.weatherEntity![City.values[i].string]!,
                               forecastWeatherEntity: forecastWeatherState.forecastWeatherEntity![City.values[i].string]!,
                               color: CustomColors.values[i].color,
+                              city: City.values[i].string,
                             ),
                         ],
                       );
