@@ -42,7 +42,7 @@ class ForecastCard extends StatelessWidget {
           ),
           Text(
             date,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
               fontSize: 12

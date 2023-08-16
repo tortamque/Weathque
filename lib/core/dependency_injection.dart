@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+// ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
 import 'package:weathque/features/app/data/data_sources/remote/api_service.dart';
 import 'package:weathque/features/app/data/repository/weather_repository_implementation.dart';
