@@ -24,7 +24,7 @@ Weathque is a dynamic weather application created using Flutter and Dart, offeri
 <a name="architecture"/></a>
 ## Architecture
 Weathque fully embraces the Clean Architecture pattern, incorporating both the Bloc and Repository patterns.</br></br>
-<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/90132962/261075240-56f7197b-7a51-4c80-94c1-206382e6fb1a.png" width="85%">
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/90132962/261075240-56f7197b-7a51-4c80-94c1-206382e6fb1a.png" width="90%">
 
 
 <a name="features"/></a>
@@ -52,11 +52,10 @@ To run the Weathque app locally, follow these steps:
 
 <a name="usage"/></a>
 ## Usage
-1. Open the Weathque app on your device or emulator.
-2. Tap or swipe the card to get a new awesome quote.
-3. A new card will appear on the screen.
-4. To change the theme color, press the palette icon on the app bar.
-5. A bottom sheet will appear, allowing you to choose your favorite color.
+1. Launch the Weathque app on your device or emulator.
+2. Swipe right to navigate to the weather forecast of the next city.
+3. Swipe left to move back to the weather forecast of the previous city.
+4. For a 5-day weather forecast, simply swipe the "Weekly Forecast" cards.
 
 <a name="screenshots-and-demo"/></a>
 ## Screenshots and Demo
