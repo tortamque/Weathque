@@ -1,7 +1,7 @@
 import 'package:weathque/features/app/domain/entities/forecast_weather_entity.dart';
 
 abstract class GetWeatherForecastState{
-  final ForecastWeatherEntity? forecastWeatherEntity;
+  final Map<String, ForecastWeatherEntity>? forecastWeatherEntity;
 
   const GetWeatherForecastState({
     this.forecastWeatherEntity
@@ -13,5 +13,5 @@ class GetWeatherForecastLoading extends GetWeatherForecastState{
 }
 
 class GetWeatherForecastDone extends GetWeatherForecastState{
-  const GetWeatherForecastDone(ForecastWeatherEntity? forecastWeatherEntity):super(forecastWeatherEntity: forecastWeatherEntity);
+  const GetWeatherForecastDone(Map<String, ForecastWeatherEntity>? forecastWeatherEntity):super(forecastWeatherEntity: forecastWeatherEntity);
 }
