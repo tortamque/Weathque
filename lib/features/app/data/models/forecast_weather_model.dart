@@ -25,7 +25,7 @@ class ForecastWeatherModel extends ForecastWeatherEntity {
       message: json['message'],
       cnt: json['cnt'],
       list: weatherDataList,
-      city: City.fromJson(json['city']),
+      city: ForecastCity.fromJson(json['city']),
     );
   }
 }
