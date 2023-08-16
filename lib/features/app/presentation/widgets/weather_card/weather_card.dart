@@ -6,12 +6,13 @@ class WeatherCard extends StatefulWidget {
   final String windSpeed;
   final String humidity;
   final String visibility;
+  final Color color;
 
   const WeatherCard({
     super.key, 
     required this.windSpeed, 
     required this.humidity, 
-    required this.visibility
+    required this.visibility, required this.color
   });
 
   @override
@@ -46,6 +47,7 @@ class _WeatherCardState extends State<WeatherCard> {
             positionInitialValue: MediaQuery.of(context).size.height/40, 
             opacityInitialValue: 0,
             child: WeatherCardTemplate(
+              color: widget.color,
               humidity: widget.humidity,
               visibility: widget.visibility,
               windSpeed: widget.windSpeed,

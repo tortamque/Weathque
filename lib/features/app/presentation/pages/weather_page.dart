@@ -10,16 +10,19 @@ class WeatherPage extends StatelessWidget {
   final WeatherEntity? weatherEntity;
   final ForecastWeatherEntity? forecastWeatherEntity;
   final String currentCity = locator<CurrentCity>().currentCity.string;
+  final Color color;
 
   WeatherPage({
     required this.weatherEntity,
     required this.forecastWeatherEntity,
+    required this.color,
     super.key
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: color,
       appBar: CustomAppBar(title: currentCity),
       body: Row(
       children: [
@@ -27,6 +30,7 @@ class WeatherPage extends StatelessWidget {
           Menu(
             weatherEntity: weatherEntity,
             forecastWeatherEntity: forecastWeatherEntity,
+            color: color,
           ),
           const Spacer(flex: 1,),
         ],

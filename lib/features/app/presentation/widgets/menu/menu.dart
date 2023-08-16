@@ -19,6 +19,7 @@ class Menu extends StatelessWidget {
   final WeatherEntity? weatherEntity;
   final ForecastWeatherEntity? forecastWeatherEntity;
   final String currentDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
+  final Color color;
   late final String condition;
   late final String temperature;
   late final String summary;
@@ -29,6 +30,7 @@ class Menu extends StatelessWidget {
   Menu({
     required this.weatherEntity,
     required this.forecastWeatherEntity,
+    required this.color,
     super.key
   }){
     condition = weatherEntity != null ?
@@ -64,7 +66,7 @@ class Menu extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Date(date: currentDate),
+          Date(date: currentDate, color: color),
           Condition(condition: condition),
           Temperature(temperature: temperature),
           const Header(text: "Daily Summary"),
@@ -74,6 +76,7 @@ class Menu extends StatelessWidget {
             humidity: humidity,
             visibility: visibility,
             windSpeed: windSpeed,
+            color: color,
           ),
           const SizedBox(height: 25),
           const WeeklyForecastHeader(),

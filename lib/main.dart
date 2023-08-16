@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:weathque/config/theme/app_themes.dart';
+import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/core/dependency_injection.dart';
 import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_bloc.dart';
 import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_event.dart';
@@ -50,10 +51,11 @@ class MyApp extends StatelessWidget {
                         slideTransform: const CubeTransform(),
                         unlimitedMode: true,
                         children: [
-                          for (var city in City.values)
+                          for (int i = 0; i < City.values.length; i++)
                             WeatherPage(
-                              weatherEntity: currentWeatherState.weatherEntity![city.string]!,
-                              forecastWeatherEntity: forecastWeatherState.forecastWeatherEntity![city.string]!,
+                              weatherEntity: currentWeatherState.weatherEntity![City.values[i].string]!,
+                              forecastWeatherEntity: forecastWeatherState.forecastWeatherEntity![City.values[i].string]!,
+                              color: CustomColors.values[i].color,
                             ),
                         ],
                       );
