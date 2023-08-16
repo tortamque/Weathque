@@ -38,13 +38,13 @@ class MyApp extends StatelessWidget {
           home: BlocBuilder<GetCurrentWeatherBloc, GetCurrentWeatherState>(
             builder: (_, currentWeatherState) {
               if(currentWeatherState is GetCurrentWeatherLoading){
-                return const LoadingPage();
+                return LoadingPage(color: CustomColors.yellow.color);
               }
               if(currentWeatherState is GetCurrentWeatherDone){
                 return BlocBuilder<GetWeatherForecastBloc, GetWeatherForecastState>(
                   builder: (_, forecastWeatherState) {
                     if(forecastWeatherState is GetWeatherForecastLoading){
-                      return const LoadingPage();
+                      return LoadingPage(color: CustomColors.yellow.color);
                     }
                     if(forecastWeatherState is GetWeatherForecastDone){
                       return CarouselSlider(
