@@ -20,6 +20,7 @@ class WeatherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: color,
       appBar: CustomAppBar(title: city),
       body: Row(
