@@ -1,29 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
 
-class SettingsButton extends StatelessWidget {
+class SettingsButton extends StatefulWidget {
   const SettingsButton({super.key});
 
   @override
+  State<SettingsButton> createState() => _SettingsButtonState();
+}
+
+class _SettingsButtonState extends State<SettingsButton> with TickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
+    );
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeOutSine
+    );
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(
-        Icons.settings,
-        color: Colors.black,
+    return RotationTransition(
+      turns: _animation,
+      child: IconButton(
+        icon: Icon(
+          Icons.settings,
+          color: Colors.black,
+        ),
+        onPressed: (){
+          _controller.reset();
+          _controller.forward();
+
+          showModalBottomSheet(
+            context: context, 
+            isScrollControlled: true,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            backgroundColor: CustomColors.yellow.color,
+            builder:(context) {
+              return _buildBottomSheetMenu(context);
+            },
+          );
+        },
       ),
-      onPressed: (){
-        showModalBottomSheet(
-          context: context, 
-          isScrollControlled: true,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          backgroundColor: CustomColors.yellow.color,
-          builder:(context) {
-            return _buildBottomSheetMenu(context);
-          },
-        );
-      },
     );
   }
 
