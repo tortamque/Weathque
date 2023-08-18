@@ -49,7 +49,7 @@ class _SettingsButtonState extends State<SettingsButton> with TickerProviderStat
             context: context, 
             isScrollControlled: true,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
             ),
             backgroundColor: CustomColors.yellow.color,
             builder:(context) {
