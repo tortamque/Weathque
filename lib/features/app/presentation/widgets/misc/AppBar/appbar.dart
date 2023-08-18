@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weathque/features/app/presentation/widgets/misc/AppBar/settings_button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
   final String title;
@@ -10,13 +11,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
     return AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Center(
-          child: Text(
-            title, 
-            style: const TextStyle(
-              fontWeight: FontWeight.bold
-            ),
-          )
+        centerTitle: true,
+        actions: [
+          SettingsButton()
+        ],
+        title: Text(
+          title, 
+          style: const TextStyle(
+            fontWeight: FontWeight.bold
+          ),
         ),
       );
   }
