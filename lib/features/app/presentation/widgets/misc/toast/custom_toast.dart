@@ -21,7 +21,7 @@ class CustomToast extends StatelessWidget {
             SizedBox(
               width: 12.0,
             ),
-            Expanded(
+            Flexible(
               child: Text(text)
             ),
         ],
