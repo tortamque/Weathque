@@ -91,7 +91,10 @@ void _onError(FToast toastManager){
   );
 }
 
-void _onSuccess(FToast toastManager){
+Future<void> _onSuccess(FToast toastManager) async {
+  // Example of city preservation
+  //locator<SaveCityUseCaseImplementation>()(cityName: *city name here*);
+
   CustomToast toast = CustomToast(
     isError: false,
     text: "City was successfully saved",
