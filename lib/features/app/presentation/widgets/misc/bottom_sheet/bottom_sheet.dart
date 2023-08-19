@@ -22,72 +22,83 @@ showCustomBottomSheet(BuildContext context){
 }
 
 Widget _buildBottomSheetMenu(BuildContext context){
-    FToast toastManager = FToast();
-    toastManager.init(context);
+  FToast toastManager = FToast();
+  toastManager.init(context);
 
-    return Container(
-      width: double.infinity,
-      height: MediaQuery.of(context).size.height - (kBottomNavigationBarHeight + kToolbarHeight),
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            TextField(
-              controller: _cityController,
-              onSubmitted: (value) {
-                print("Sibmitted");
-              },
-              cursorColor: Colors.black,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                  borderSide: BorderSide(color: Colors.black)
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                  borderSide: BorderSide(color: Colors.black)
-                ),
-                hintText: "Enter a city",
-                labelText: "City",
-                labelStyle: TextStyle(
-                  color: Colors.black
-                ),
-                suffixIcon: IconButton(
-                  icon: Icon(Icons.search, color: Colors.black),
-                  onPressed: () async {
-                    String cityName = _cityController.text;
-
-                    try {
-                      var response = await locator<GetCurrentWeatherUseCase>()(cityName: cityName);
-                    } catch (_) {
-                      CustomToast toast = CustomToast(
-                        isError: true,
-                        text: "This city cannot be found in the database",
-                      );
-                      toastManager.showToast(
-                          child: toast,
-                          gravity: ToastGravity.BOTTOM,
-                          toastDuration: Duration(seconds: 2),
-                      );
-                      return; 
-                    }
-                    
-                    CustomToast toast = CustomToast(
-                        isError: false,
-                        text: "City was successfully saved",
-                      );
-                      toastManager.showToast(
-                          child: toast,
-                          gravity: ToastGravity.BOTTOM,
-                          toastDuration: Duration(seconds: 2),
-                      );
-                  },
-                )
+  return Container(
+    width: double.infinity,
+    height: MediaQuery.of(context).size.height - (kBottomNavigationBarHeight + kToolbarHeight),
+    child: Padding(
+      padding: EdgeInsets.symmetric(vertical: 30, horizontal: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          TextField(
+            controller: _cityController,
+            onSubmitted: (value) {
+              _onSubmit(toastManager);
+            },
+            cursorColor: Colors.black,
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                borderSide: BorderSide(color: Colors.black)
               ),
-            )
-          ],
-        ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                borderSide: BorderSide(color: Colors.black)
+              ),
+              hintText: "Enter a city",
+              labelText: "City",
+              labelStyle: TextStyle(
+                color: Colors.black
+              ),
+              suffixIcon: IconButton(
+                icon: Icon(Icons.search, color: Colors.black),
+                onPressed: () {
+                  _onSubmit(toastManager);
+                },
+              )
+            ),
+          )
+        ],
       ),
-    );
+    ),
+  );
+}
+
+void _onSubmit(FToast toastManager) async {
+  String cityName = _cityController.text;
+
+  try {
+    var response = await locator<GetCurrentWeatherUseCase>()(cityName: cityName);
+  } catch (_) {
+    _onError(toastManager);
+    return; 
   }
+  _onSuccess(toastManager);
+}
+  
+void _onError(FToast toastManager){
+  CustomToast toast = CustomToast(
+    isError: true,
+    text: "This city cannot be found in the database",
+  );
+  toastManager.showToast(
+      child: toast,
+      gravity: ToastGravity.BOTTOM,
+      toastDuration: Duration(seconds: 2),
+  );
+}
+
+void _onSuccess(FToast toastManager){
+  CustomToast toast = CustomToast(
+    isError: false,
+    text: "City was successfully saved",
+  );
+  toastManager.showToast(
+      child: toast,
+      gravity: ToastGravity.BOTTOM,
+      toastDuration: Duration(seconds: 2),
+  );
+}
