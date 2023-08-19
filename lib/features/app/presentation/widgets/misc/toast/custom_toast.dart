@@ -19,9 +19,11 @@ class CustomToast extends StatelessWidget {
         children: [
             Icon(isError ? Icons.error_outline : Icons.check),
             SizedBox(
-            width: 12.0,
+              width: 12.0,
             ),
-            Text(text),
+            Expanded(
+              child: Text(text)
+            ),
         ],
         ),
     );

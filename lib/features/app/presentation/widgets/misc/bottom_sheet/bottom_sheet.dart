@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
+import 'package:weathque/core/dependency_injection.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:weathque/features/app/domain/usecases/get_current_weather.dart';
+import 'package:weathque/features/app/presentation/widgets/misc/toast/custom_toast.dart';
+
+TextEditingController _cityController = TextEditingController();
 
 showCustomBottomSheet(BuildContext context){
   showModalBottomSheet(
@@ -16,6 +22,9 @@ showCustomBottomSheet(BuildContext context){
 }
 
 Widget _buildBottomSheetMenu(BuildContext context){
+    FToast toastManager = FToast();
+    toastManager.init(context);
+
     return Container(
       width: double.infinity,
       height: MediaQuery.of(context).size.height - (kBottomNavigationBarHeight + kToolbarHeight),
@@ -25,6 +34,10 @@ Widget _buildBottomSheetMenu(BuildContext context){
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextField(
+              controller: _cityController,
+              onSubmitted: (value) {
+                print("Sibmitted");
+              },
               cursorColor: Colors.black,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -42,7 +55,34 @@ Widget _buildBottomSheetMenu(BuildContext context){
                 ),
                 suffixIcon: IconButton(
                   icon: Icon(Icons.search, color: Colors.black),
-                  onPressed: (){},
+                  onPressed: () async {
+                    String cityName = _cityController.text;
+
+                    try {
+                      var response = await locator<GetCurrentWeatherUseCase>()(cityName: cityName);
+                    } catch (_) {
+                      CustomToast toast = CustomToast(
+                        isError: true,
+                        text: "This city cannot be found in the database",
+                      );
+                      toastManager.showToast(
+                          child: toast,
+                          gravity: ToastGravity.BOTTOM,
+                          toastDuration: Duration(seconds: 2),
+                      );
+                      return; 
+                    }
+                    
+                    CustomToast toast = CustomToast(
+                        isError: false,
+                        text: "City was successfully saved",
+                      );
+                      toastManager.showToast(
+                          child: toast,
+                          gravity: ToastGravity.BOTTOM,
+                          toastDuration: Duration(seconds: 2),
+                      );
+                  },
                 )
               ),
             )
