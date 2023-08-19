@@ -16,6 +16,7 @@ import 'package:weathque/features/app/presentation/pages/weather_page.dart';
 
 import 'features/app/domain/entities/cities_enum.dart';
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   initializeDependencies();
   runApp(const WeathqueApp());
 }
