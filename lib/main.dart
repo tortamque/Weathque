@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:weathque/config/theme/app_themes.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/core/dependency_injection.dart';
@@ -33,41 +34,42 @@ class WeathqueApp extends StatelessWidget {
         )
       ], 
       child: MaterialApp(
-          theme: theme(),
-          // GetCurrentWeatherBloc
-          home: BlocBuilder<GetCurrentWeatherBloc, GetCurrentWeatherState>(
-            builder: (_, currentWeatherState) {
-              if(currentWeatherState is GetCurrentWeatherLoading){
-                return LoadingPage(color: CustomColors.yellow.color);
-              }
-              if(currentWeatherState is GetCurrentWeatherDone){
-                return BlocBuilder<GetWeatherForecastBloc, GetWeatherForecastState>(
-                  builder: (_, forecastWeatherState) {
-                    if(forecastWeatherState is GetWeatherForecastLoading){
-                      return LoadingPage(color: CustomColors.yellow.color);
-                    }
-                    if(forecastWeatherState is GetWeatherForecastDone){
-                      return CarouselSlider(
-                        slideTransform: const CubeTransform(),
-                        unlimitedMode: true,
-                        children: [
-                          for (int i = 0; i < City.values.length; i++)
-                            WeatherPage(
-                              weatherEntity: currentWeatherState.weatherEntity![City.values[i].string]!,
-                              forecastWeatherEntity: forecastWeatherState.forecastWeatherEntity![City.values[i].string]!,
-                              color: CustomColors.values[i].color,
-                              city: City.values[i].string,
-                            ),
-                        ],
-                      );
-                    }
-                    return const SizedBox();
-                  },
-                );
-              }
-              return const SizedBox();
+        builder: FToastBuilder(),
+        theme: theme(),
+        // GetCurrentWeatherBloc
+        home: BlocBuilder<GetCurrentWeatherBloc, GetCurrentWeatherState>(
+          builder: (_, currentWeatherState) {
+            if(currentWeatherState is GetCurrentWeatherLoading){
+              return LoadingPage(color: CustomColors.yellow.color);
             }
-          )
+            if(currentWeatherState is GetCurrentWeatherDone){
+              return BlocBuilder<GetWeatherForecastBloc, GetWeatherForecastState>(
+                builder: (_, forecastWeatherState) {
+                  if(forecastWeatherState is GetWeatherForecastLoading){
+                    return LoadingPage(color: CustomColors.yellow.color);
+                  }
+                  if(forecastWeatherState is GetWeatherForecastDone){
+                    return CarouselSlider(
+                      slideTransform: const CubeTransform(),
+                      unlimitedMode: true,
+                      children: [
+                        for (int i = 0; i < City.values.length; i++)
+                          WeatherPage(
+                            weatherEntity: currentWeatherState.weatherEntity![City.values[i].string]!,
+                            forecastWeatherEntity: forecastWeatherState.forecastWeatherEntity![City.values[i].string]!,
+                            color: CustomColors.values[i].color,
+                            city: City.values[i].string,
+                          ),
+                      ],
+                    );
+                  }
+                  return const SizedBox();
+                },
+              );
+            }
+            return const SizedBox();
+          }
+        )
       )
     );
   }
