@@ -41,6 +41,7 @@ dependencies:
   intl: ^0.18.1
   flutter_carousel_slider: ^1.1.0
   fluttertoast: ^8.2.2
+  shared_preferences: ^2.2.0
 
 dev_dependencies:
   flutter_test:
