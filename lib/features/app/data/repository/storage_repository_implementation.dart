@@ -10,4 +10,9 @@ class StorageRepositoryImplementation implements StorageRepository{
   Future<void> saveCity(String cityName) async{
     await _storage.prefs.setStringList('cities', [cityName]);
   }
+  
+  @override
+  List<String>? getCities() {
+    return _storage.getCities();
+  }
 }
