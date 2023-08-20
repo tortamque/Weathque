@@ -7,6 +7,7 @@ import 'package:weathque/features/app/data/repository/storage_repository_impleme
 import 'package:weathque/features/app/data/repository/weather_repository_implementation.dart';
 import 'package:weathque/features/app/domain/entities/summary_builder.dart';
 import 'package:weathque/features/app/domain/repository/weather_repository.dart';
+import 'package:weathque/features/app/domain/usecases/get_cities.dart';
 import 'package:weathque/features/app/domain/usecases/get_current_weather.dart';
 import 'package:weathque/features/app/domain/usecases/get_weather_forecast.dart';
 import 'package:weathque/features/app/domain/usecases/save_city.dart';
@@ -50,6 +51,9 @@ Future<void> initializeDependencies() async {
   );
   locator.registerSingleton<SaveCityUseCaseImplementation>(
     SaveCityUseCaseImplementation(locator<StorageRepositoryImplementation>())
+  );
+  locator.registerSingleton<GetCitiesUseCaseImplementation>(
+    GetCitiesUseCaseImplementation(locator<StorageRepositoryImplementation>())
   );
 
 
