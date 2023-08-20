@@ -10,13 +10,11 @@ class StorageImplementation implements Storage{
   late SharedPreferences prefs;
 
   StorageImplementation() {
-    print("Initializing prefs");
     _initPrefs();
   }
 
   Future<void> _initPrefs() async {
     prefs = await SharedPreferences.getInstance();
-    print("Initialized prefs");
   }
 
   @override
