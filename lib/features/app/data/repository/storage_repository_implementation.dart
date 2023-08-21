@@ -7,8 +7,8 @@ class StorageRepositoryImplementation implements StorageRepository{
   StorageRepositoryImplementation(this._storage);
 
   @override
-  Future<void> saveCity(String cityName) async{
-    await _storage.saveCity(cityName);
+  Future<bool> saveCity(String cityName) async{
+    return await _storage.saveCity(cityName);
   }
   
   @override

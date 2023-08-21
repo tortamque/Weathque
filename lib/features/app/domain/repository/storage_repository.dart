@@ -1,4 +1,4 @@
 abstract class StorageRepository{
-  Future<void> saveCity(String cityName);
+  Future<bool> saveCity(String cityName);
   List<String>? getCities();
 }
