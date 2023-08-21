@@ -24,6 +24,7 @@ showCustomBottomSheet(BuildContext context){
 }
 
 Widget _buildBottomSheetMenu(BuildContext context){
+  List<String> cities = locator<GetCitiesUseCaseImplementation>()();
   FToast toastManager = FToast();
   toastManager.init(context);
 
@@ -62,6 +63,14 @@ Widget _buildBottomSheetMenu(BuildContext context){
                 },
               )
             ),
+          ),
+          Expanded(
+            child: ListView.builder( //ListView.separated with separatorBuilder
+              itemCount: cities.length,
+              itemBuilder: (context, index) {
+                return Text(cities[index]);
+              },
+            ),
           )
         ],
       ),
@@ -95,7 +104,7 @@ void _onError(FToast toastManager){
 
 Future<void> _onSuccess(FToast toastManager) async {
   // Example of cities fetching
-  // print(locator<GetCitiesUseCaseImplementation>()());
+  // print();
   // Example of city preservation
   
   bool preservationResult = await locator<SaveCityUseCaseImplementation>()(cityName: _cityController.text);
