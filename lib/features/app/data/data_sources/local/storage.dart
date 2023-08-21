@@ -19,15 +19,18 @@ class StorageImplementation implements Storage{
 
   @override
   Future<void> saveCity(String cityName) async {
-    // P.S. This is just a template, I'm aware that it doesn't work as planned. 
-    // Will fix it later
-    await prefs.setStringList('cities', [cityName]);
+    final List<String> cities = getCities() ?? [];
+    
+    if(!cities.contains(cityName)){
+      cities.add(cityName);
+      await prefs.setStringList('cities', cities);
+    }
   }
   
   @override
   List<String>? getCities() {
-    final List<String>? items = prefs.getStringList('cities');
+    final List<String>? cities = prefs.getStringList('cities');
 
-    return items;
+    return cities;
   }
 }
