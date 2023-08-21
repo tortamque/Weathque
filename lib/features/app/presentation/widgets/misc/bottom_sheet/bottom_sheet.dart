@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/core/dependency_injection.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:weathque/features/app/domain/usecases/get_cities.dart';
 import 'package:weathque/features/app/domain/usecases/get_current_weather.dart';
+import 'package:weathque/features/app/domain/usecases/save_city.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/toast/custom_toast.dart';
 
 TextEditingController _cityController = TextEditingController();
@@ -92,13 +94,24 @@ void _onError(FToast toastManager){
 }
 
 Future<void> _onSuccess(FToast toastManager) async {
+  // Example of cities fetching
+  // print(locator<GetCitiesUseCaseImplementation>()());
   // Example of city preservation
-  //locator<SaveCityUseCaseImplementation>()(cityName: *city name here*);
+  
+  bool preservationResult = await locator<SaveCityUseCaseImplementation>()(cityName: _cityController.text);
+  late CustomToast toast;
 
-  CustomToast toast = CustomToast(
-    isError: false,
-    text: "City was successfully saved",
-  );
+  if(preservationResult){
+    toast = CustomToast(
+      isError: false,
+      text: "City was successfully saved",
+    );
+  } else{
+    toast = CustomToast(
+      isError: true,
+      text: "This city is already saved in the database",
+    );
+  }
   toastManager.showToast(
       child: toast,
       gravity: ToastGravity.BOTTOM,
