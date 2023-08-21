@@ -41,6 +41,7 @@ Widget _buildBottomSheetMenu(BuildContext context){
             onSubmitted: (value) {
               _onSubmit(toastManager);
             },
+            textCapitalization: TextCapitalization.words,
             cursorColor: Colors.black,
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
