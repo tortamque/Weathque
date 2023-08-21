@@ -12,7 +12,7 @@ class StorageRepositoryImplementation implements StorageRepository{
   }
   
   @override
-  List<String>? getCities() {
+  List<String> getCities() {
     return _storage.getCities();
   }
 }

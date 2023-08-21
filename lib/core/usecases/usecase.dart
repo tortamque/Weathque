@@ -7,5 +7,5 @@ abstract class SaveCityUseCase{
 }
 
 abstract class GetCitiesUseCase{
-  List<String>? call();
+  List<String> call();
 }

@@ -7,7 +7,7 @@ class GetCitiesUseCaseImplementation implements GetCitiesUseCase{
   GetCitiesUseCaseImplementation(this._storage);
 
   @override
-  List<String>? call() {
+  List<String> call() {
     return _storage.getCities();
   }
 }

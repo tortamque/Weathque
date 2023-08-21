@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 abstract class Storage {
   late SharedPreferences prefs;
   Future<bool> saveCity(String cityName);
-  List<String>? getCities();
+  List<String> getCities();
 }
 
 class StorageImplementation implements Storage{
@@ -19,7 +19,7 @@ class StorageImplementation implements Storage{
 
   @override
   Future<bool> saveCity(String cityName) async {
-    final List<String> cities = getCities() ?? [];
+    final List<String> cities = getCities();
     
     if(!cities.contains(cityName)){
       cities.add(cityName);
@@ -32,8 +32,8 @@ class StorageImplementation implements Storage{
   }
   
   @override
-  List<String>? getCities() {
-    final List<String>? cities = prefs.getStringList('cities');
+  List<String> getCities() {
+    final List<String> cities = prefs.getStringList('cities') ?? [];
 
     return cities;
   }
