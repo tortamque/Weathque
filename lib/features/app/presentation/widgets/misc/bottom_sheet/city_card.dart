@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weathque/config/theme/custom_colors.dart';
+import 'package:weathque/core/dependency_injection.dart';
+import 'package:weathque/features/app/domain/usecases/delete_city.dart';
 
 class CityCard extends StatelessWidget {
   final String name;
@@ -7,12 +8,11 @@ class CityCard extends StatelessWidget {
   const CityCard({super.key, required this.name});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
     return Dismissible(
       key: Key(name),
-      onDismissed: (direction) {
-        //print("$name deleted");
-        print(direction);
+      onDismissed: (_) async {
+        await locator<DeleteCityUseCaseImplementation>()(name);
       },
       child: Card(
         child: Center(
