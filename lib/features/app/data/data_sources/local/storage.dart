@@ -4,6 +4,7 @@ abstract class Storage {
   late SharedPreferences prefs;
   Future<bool> saveCity(String cityName);
   List<String> getCities();
+  void deleteCity(String cityName);
 }
 
 class StorageImplementation implements Storage{
@@ -36,5 +37,14 @@ class StorageImplementation implements Storage{
     final List<String> cities = prefs.getStringList('cities') ?? [];
 
     return cities;
+  }
+  
+  @override
+  Future<void> deleteCity(String cityName) async {
+    List<String> cities = getCities();
+    cities.remove(cityName);
+
+    await prefs.remove('cities');
+    await prefs.setStringList('cities', cities);
   }
 }
