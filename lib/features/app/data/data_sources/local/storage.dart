@@ -4,7 +4,7 @@ abstract class Storage {
   late SharedPreferences prefs;
   Future<bool> saveCity(String cityName);
   List<String> getCities();
-  void deleteCity(String cityName);
+  Future<void> deleteCity(String cityName);
 }
 
 class StorageImplementation implements Storage{
