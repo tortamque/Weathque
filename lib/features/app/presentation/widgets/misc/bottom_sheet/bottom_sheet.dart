@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:weathque/features/app/domain/usecases/get_cities.dart';
 import 'package:weathque/features/app/domain/usecases/get_current_weather.dart';
 import 'package:weathque/features/app/domain/usecases/save_city.dart';
+import 'package:weathque/features/app/presentation/widgets/misc/bottom_sheet/city_card.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/toast/custom_toast.dart';
 
 TextEditingController _cityController = TextEditingController();
@@ -69,7 +70,7 @@ Widget _buildBottomSheetMenu(BuildContext context){
             child: ListView.builder( //ListView.separated with separatorBuilder
               itemCount: cities.length,
               itemBuilder: (context, index) {
-                return Text(cities[index]);
+                return CityCard(name: cities[index]);
               },
             ),
           )
