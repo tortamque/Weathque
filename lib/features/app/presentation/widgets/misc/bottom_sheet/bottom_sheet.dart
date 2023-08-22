@@ -67,11 +67,15 @@ Widget _buildBottomSheetMenu(BuildContext context){
             ),
           ),
           Expanded(
-            child: ListView.builder( //ListView.separated with separatorBuilder
-              itemCount: cities.length,
-              itemBuilder: (context, index) {
-                return CityCard(name: cities[index]);
-              },
+            child: Padding(
+              // Maybe I should replace it with symmetric
+              padding: const EdgeInsets.only(top: 10),
+              child: ListView.builder(
+                itemCount: cities.length,
+                itemBuilder: (context, index) {
+                  return CityCard(name: cities[index]);
+                },
+              ),
             ),
           )
         ],
