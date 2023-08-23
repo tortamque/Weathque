@@ -10,6 +10,10 @@ abstract class GetCitiesUseCase{
   List<String> call();
 }
 
+abstract class GetColorsUseCase{
+  List<String> call();
+}
+
 abstract class DeleteCityUseCase{
   Future<void> call(String cityName);
 }
