@@ -50,11 +50,16 @@ class StorageImplementation implements Storage{
   
   @override
   Future<void> deleteCity(String cityName) async {
-    // TODO: Add color removal
     List<String> cities = getCities();
+    List<String> colors = getColors();
+    int colorIndex = cities.indexWhere((element) => element == cityName);
+
     cities.remove(cityName);
+    colors.removeAt(colorIndex);
 
     await prefs.remove('cities');
+    await prefs.remove('colors');
     await prefs.setStringList('cities', cities);
+    await prefs.setStringList('colors', colors);
   }
 }
