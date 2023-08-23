@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/core/dependency_injection.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:weathque/features/app/domain/usecases/get_cities.dart';
 import 'package:weathque/features/app/domain/usecases/get_current_weather.dart';
 import 'package:weathque/features/app/domain/usecases/save_city.dart';
+import 'package:weathque/features/app/presentation/bloc/add_city/cities_changed_cubit.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/bottom_sheet/city_card.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/toast/custom_toast.dart';
 
@@ -25,7 +26,8 @@ showCustomBottomSheet(BuildContext context){
 }
 
 Widget _buildBottomSheetMenu(BuildContext context){
-  List<String> cities = locator<GetCitiesUseCaseImplementation>()();
+  //List<String> cities = locator<GetCitiesUseCaseImplementation>()();
+  //List<String> cities = context.watch<AddCityCubit>().state;
   FToast toastManager = FToast();
   toastManager.init(context);
 
@@ -40,7 +42,7 @@ Widget _buildBottomSheetMenu(BuildContext context){
           TextField(
             controller: _cityController,
             onSubmitted: (value) {
-              _onSubmit(toastManager);
+              _onSubmit(toastManager, context);
             },
             textCapitalization: TextCapitalization.words,
             cursorColor: Colors.black,
@@ -61,21 +63,26 @@ Widget _buildBottomSheetMenu(BuildContext context){
               suffixIcon: IconButton(
                 icon: Icon(Icons.search, color: Colors.black),
                 onPressed: () {
-                  _onSubmit(toastManager);
+                  _onSubmit(toastManager, context);
                 },
               )
             ),
           ),
           Expanded(
-            child: Padding(
-              // Maybe I should replace it with symmetric
-              padding: const EdgeInsets.only(top: 10),
-              child: ListView.builder(
-                itemCount: cities.length,
-                itemBuilder: (context, index) {
-                  return CityCard(name: cities[index]);
-                },
-              ),
+            child: BlocBuilder<CitiesChangedCubit, List<String>>(
+              builder: (context, state) {
+                print("rebuilt $state");
+                return Padding(
+                  // Maybe I should replace it with symmetric
+                  padding: const EdgeInsets.only(top: 10),
+                  child: ListView.builder(
+                    itemCount: state.length,
+                    itemBuilder: (context, index) {
+                      return CityCard(name: state[index]);
+                    },
+                  ),
+                );
+              },
             ),
           )
         ],
@@ -84,7 +91,7 @@ Widget _buildBottomSheetMenu(BuildContext context){
   );
 }
 
-void _onSubmit(FToast toastManager) async {
+void _onSubmit(FToast toastManager, BuildContext context) async {
   String cityName = _cityController.text;
 
   try {
@@ -93,7 +100,7 @@ void _onSubmit(FToast toastManager) async {
     _onError(toastManager);
     return; 
   }
-  _onSuccess(toastManager);
+  _onSuccess(toastManager, context);
 }
   
 void _onError(FToast toastManager){
@@ -108,11 +115,7 @@ void _onError(FToast toastManager){
   );
 }
 
-Future<void> _onSuccess(FToast toastManager) async {
-  // Example of cities fetching
-  // print();
-  // Example of city preservation
-  
+Future<void> _onSuccess(FToast toastManager, BuildContext context) async {
   bool preservationResult = await locator<SaveCityUseCaseImplementation>()(cityName: _cityController.text);
   late CustomToast toast;
 
@@ -132,4 +135,6 @@ Future<void> _onSuccess(FToast toastManager) async {
       gravity: ToastGravity.BOTTOM,
       toastDuration: Duration(seconds: 2),
   );
+
+  context.read<CitiesChangedCubit>()();
 }

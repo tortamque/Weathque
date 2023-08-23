@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/core/dependency_injection.dart';
 import 'package:weathque/features/app/domain/usecases/delete_city.dart';
+import 'package:weathque/features/app/presentation/bloc/add_city/cities_changed_cubit.dart';
 
 class CityCard extends StatelessWidget {
   final String name;
@@ -16,6 +18,7 @@ class CityCard extends StatelessWidget {
         key: Key(name),
         onDismissed: (_) async {
           await locator<DeleteCityUseCaseImplementation>()(name);
+          context.read<CitiesChangedCubit>()();
         },
         child: Card(
           child: Center(
