@@ -26,8 +26,6 @@ showCustomBottomSheet(BuildContext context){
 }
 
 Widget _buildBottomSheetMenu(BuildContext context){
-  //List<String> cities = locator<GetCitiesUseCaseImplementation>()();
-  //List<String> cities = context.watch<AddCityCubit>().state;
   FToast toastManager = FToast();
   toastManager.init(context);
 
@@ -72,7 +70,6 @@ Widget _buildBottomSheetMenu(BuildContext context){
             child: BlocBuilder<CitiesChangedCubit, List<String>>(
               builder: (context, state) {
                 return Padding(
-                  // Maybe I should replace it with symmetric
                   padding: const EdgeInsets.only(top: 10),
                   child: ListView.builder(
                     itemCount: state.length,
