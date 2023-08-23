@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:weathque/config/theme/app_themes.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/core/dependency_injection.dart';
+import 'package:weathque/features/app/presentation/bloc/add_city/cities_changed_cubit.dart';
 import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_bloc.dart';
 import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_event.dart';
 import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_state.dart';
@@ -32,6 +33,9 @@ class WeathqueApp extends StatelessWidget {
         ),
         BlocProvider<GetWeatherForecastBloc>(
           create: (context) => locator()..add(const GetWeatherForecast()),
+        ),
+        BlocProvider<CitiesChangedCubit>(
+          create: (context) => locator(),
         )
       ], 
       child: MaterialApp(
