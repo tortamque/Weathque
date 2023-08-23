@@ -6,7 +6,6 @@ class CitiesChangedCubit extends Cubit<List<String>>{
   CitiesChangedCubit() : super(locator<GetCitiesUseCaseImplementation>()());
 
   void call(){
-    print("cubit called ${locator<GetCitiesUseCaseImplementation>()()}");
     emit(locator<GetCitiesUseCaseImplementation>()());
   }
 }
