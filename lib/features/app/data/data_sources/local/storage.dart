@@ -4,6 +4,7 @@ abstract class Storage {
   late SharedPreferences prefs;
   Future<bool> saveCity(String cityName, String colorValue);
   List<String> getCities();
+  List<String> getColors();
   Future<void> deleteCity(String cityName);
 }
 
