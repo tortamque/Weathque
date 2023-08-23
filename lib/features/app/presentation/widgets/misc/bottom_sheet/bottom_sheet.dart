@@ -77,7 +77,7 @@ Widget _buildBottomSheetMenu(BuildContext context){
                   child: ListView.builder(
                     itemCount: state.length,
                     itemBuilder: (context, index) {
-                      return CityCard(name: state[index]);
+                      return CityCard(name: state[index], index: index);
                     },
                   ),
                 );
