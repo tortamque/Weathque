@@ -7,7 +7,7 @@ class SaveCityUseCaseImplementation implements SaveCityUseCase{
   SaveCityUseCaseImplementation(this._storage);
   
   @override
-  Future<bool> call({required String cityName}) {
-    return _storage.saveCity(cityName);
+  Future<bool> call({required String cityName, required String colorValue}) {
+    return _storage.saveCity(cityName, colorValue);
   }
 }

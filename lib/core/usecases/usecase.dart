@@ -3,7 +3,7 @@ abstract class UseCase<Type, String>{
 }
 
 abstract class SaveCityUseCase{
-  Future<bool> call({required String cityName});
+  Future<bool> call({required String cityName, required String colorValue});
 }
 
 abstract class GetCitiesUseCase{
