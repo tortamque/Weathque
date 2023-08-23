@@ -15,6 +15,11 @@ class StorageRepositoryImplementation implements StorageRepository{
   List<String> getCities() {
     return _storage.getCities();
   }
+
+  @override
+  List<String> getColors() {
+    return _storage.getColors();
+  }
   
   @override
   Future<void> deleteCity(String cityName) async {
