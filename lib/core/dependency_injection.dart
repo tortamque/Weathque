@@ -12,6 +12,7 @@ import 'package:weathque/features/app/domain/usecases/get_cities.dart';
 import 'package:weathque/features/app/domain/usecases/get_current_weather.dart';
 import 'package:weathque/features/app/domain/usecases/get_weather_forecast.dart';
 import 'package:weathque/features/app/domain/usecases/save_city.dart';
+import 'package:weathque/features/app/presentation/bloc/add_city/cities_changed_cubit.dart';
 import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_bloc.dart';
 import 'package:weathque/features/app/presentation/bloc/get_weather_forecast/get_weather_forecast_bloc.dart';
 
@@ -69,6 +70,11 @@ Future<void> initializeDependencies() async {
     () => GetWeatherForecastBloc(locator())
   );
 
-  //Entities
+  // Cubit
+  locator.registerFactory<CitiesChangedCubit>(
+    () => CitiesChangedCubit()
+  );
+
+  // Entities
   locator.registerSingleton(SummaryBuilder());
 }
