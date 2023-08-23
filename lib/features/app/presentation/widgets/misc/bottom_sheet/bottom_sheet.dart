@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
@@ -112,7 +114,10 @@ void _onError(FToast toastManager){
 }
 
 Future<void> _onSuccess(FToast toastManager, BuildContext context) async {
-  bool preservationResult = await locator<SaveCityUseCaseImplementation>()(cityName: _cityController.text);
+  int randomIndex = Random().nextInt(CustomColors.values.length);
+  Color randomColor = CustomColors.values[randomIndex].color;
+  
+  bool preservationResult = await locator<SaveCityUseCaseImplementation>()(cityName: _cityController.text, colorValue: randomColor.value.toString());
   late CustomToast toast;
 
   if(preservationResult){
