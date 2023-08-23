@@ -71,7 +71,6 @@ Widget _buildBottomSheetMenu(BuildContext context){
           Expanded(
             child: BlocBuilder<CitiesChangedCubit, List<String>>(
               builder: (context, state) {
-                print("rebuilt $state");
                 return Padding(
                   // Maybe I should replace it with symmetric
                   padding: const EdgeInsets.only(top: 10),
