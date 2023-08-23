@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class Storage {
   late SharedPreferences prefs;
-  Future<bool> saveCity(String cityName);
+  Future<bool> saveCity(String cityName, String colorValue);
   List<String> getCities();
   Future<void> deleteCity(String cityName);
 }
@@ -19,12 +19,15 @@ class StorageImplementation implements Storage{
   }
 
   @override
-  Future<bool> saveCity(String cityName) async {
+  Future<bool> saveCity(String cityName, String colorValue) async {
     final List<String> cities = getCities();
+    final List<String> colors = getColors();
     
     if(!cities.contains(cityName)){
       cities.add(cityName);
+      colors.add(colorValue);
       await prefs.setStringList('cities', cities);
+      await prefs.setStringList('colors', colors);
 
       return true;
     }
@@ -38,9 +41,16 @@ class StorageImplementation implements Storage{
 
     return cities;
   }
+
+  List<String> getColors(){
+    final List<String> colors = prefs.getStringList('colors') ?? [];
+
+    return colors;
+  }
   
   @override
   Future<void> deleteCity(String cityName) async {
+    // TODO: Add color removal
     List<String> cities = getCities();
     cities.remove(cityName);
 
