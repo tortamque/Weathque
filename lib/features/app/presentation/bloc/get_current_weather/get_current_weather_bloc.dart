@@ -15,8 +15,6 @@ class GetCurrentWeatherBloc extends Bloc<GetCurrentWeatherEvent, GetCurrentWeath
   }
 
   void onGetCurrentWeather(GetCurrentWeather event, Emitter<GetCurrentWeatherState> emitter) async{
-    await locator<StorageImplementation>().ensurePrefsInitialized();
-    
     List<String> cities = locator<GetCitiesUseCaseImplementation>()();
     Map<String, WeatherEntity> entities = {};
     
