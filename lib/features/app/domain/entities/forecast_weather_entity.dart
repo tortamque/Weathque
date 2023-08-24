@@ -199,6 +199,6 @@ class Coord {
   Coord({required this.lat, required this.lon});
 
   factory Coord.fromJson(Map<String, dynamic> json) {
-    return Coord(lat: json['lat'], lon: json['lon']);
+    return Coord(lat: json['lat'].toDouble(), lon: json['lon'].toDouble());
   }
 }
