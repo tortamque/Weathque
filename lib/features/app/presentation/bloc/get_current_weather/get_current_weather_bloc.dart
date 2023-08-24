@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weathque/core/dependency_injection.dart';
-import 'package:weathque/features/app/data/data_sources/local/storage.dart';
 import 'package:weathque/features/app/domain/entities/weather_entity.dart';
 import 'package:weathque/features/app/domain/usecases/get_cities.dart';
 import 'package:weathque/features/app/domain/usecases/get_current_weather.dart';
@@ -15,6 +14,9 @@ class GetCurrentWeatherBloc extends Bloc<GetCurrentWeatherEvent, GetCurrentWeath
   }
 
   void onGetCurrentWeather(GetCurrentWeather event, Emitter<GetCurrentWeatherState> emitter) async{
+    // ignore: invalid_use_of_visible_for_testing_member
+    emit(const GetCurrentWeatherLoading());
+    
     List<String> cities = locator<GetCitiesUseCaseImplementation>()();
     Map<String, WeatherEntity> entities = {};
     

@@ -14,11 +14,14 @@ class GetWeatherForecastBloc extends Bloc<GetWeatherForecastEvent, GetWeatherFor
   }
 
   void onGetWeatherForecast(GetWeatherForecast event, Emitter<GetWeatherForecastState> emitter) async{
+    // ignore: invalid_use_of_visible_for_testing_member
+    emit(const GetWeatherForecastLoading());
+    
     List<String> cities = locator<GetCitiesUseCaseImplementation>()();
     Map<String, ForecastWeatherEntity> entities = {};
     
     for (var city in cities) {
-      final dataState = await _getWeatherForecastUseCase(cityName: city);
+      final dataState = await _getWeatherForecastUseCase.call(cityName: city);
 
       entities[city] = dataState;
     }

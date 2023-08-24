@@ -8,6 +8,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:weathque/features/app/domain/usecases/get_current_weather.dart';
 import 'package:weathque/features/app/domain/usecases/save_city.dart';
 import 'package:weathque/features/app/presentation/bloc/add_city/cities_changed_cubit.dart';
+import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_bloc.dart';
+import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_event.dart';
+import 'package:weathque/features/app/presentation/bloc/get_weather_forecast/get_weather_forecast_bloc.dart';
+import 'package:weathque/features/app/presentation/bloc/get_weather_forecast/get_weather_forecast_event.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/bottom_sheet/city_card.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/toast/custom_toast.dart';
 
@@ -140,7 +144,8 @@ Future<void> _onSuccess(FToast toastManager, BuildContext context) async {
       gravity: ToastGravity.BOTTOM,
       toastDuration: Duration(seconds: 2),
   );
-
+  BlocProvider.of<GetCurrentWeatherBloc>(context).add(const GetCurrentWeather());
+  BlocProvider.of<GetWeatherForecastBloc>(context).add(const GetWeatherForecast());
   context.read<CitiesChangedCubit>()();
   _cityController.text = "";
 }
