@@ -138,4 +138,5 @@ Future<void> _onSuccess(FToast toastManager, BuildContext context) async {
   );
 
   context.read<CitiesChangedCubit>()();
+  _cityController.text = "";
 }
