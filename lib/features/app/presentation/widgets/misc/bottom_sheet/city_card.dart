@@ -8,8 +8,9 @@ import 'package:weathque/features/app/presentation/widgets/animations/top_animat
 class CityCard extends StatefulWidget {
   final String name;
   final int index;
+  final bool isLast;
 
-  const CityCard({super.key, required this.name, required this.index});
+  const CityCard({super.key, required this.name, required this.index, required this.isLast});
 
   @override
   State<CityCard> createState() => _CityCardState();
@@ -61,6 +62,9 @@ class _CityCardState extends State<CityCard> {
             padding: const EdgeInsets.symmetric(vertical: 2.5),
             child: Dismissible(
               key: Key(widget.name),
+              confirmDismiss: (direction) async {
+                return !widget.isLast;
+              },
               onDismissed: (_) async {
                 await locator<DeleteCityUseCaseImplementation>()(widget.name);
                 context.read<CitiesChangedCubit>()();

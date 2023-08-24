@@ -70,13 +70,17 @@ Widget _buildBottomSheetMenu(BuildContext context){
           ),
           Expanded(
             child: BlocBuilder<CitiesChangedCubit, List<String>>(
-              builder: (context, state) {
+              builder: (context, cubitCities) {
                 return Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: ListView.builder(
-                    itemCount: state.length,
+                    itemCount: cubitCities.length,
                     itemBuilder: (context, index) {
-                      return CityCard(name: state[index], index: index);
+                      if(cubitCities.length > 1){
+                        return CityCard(name: cubitCities[index], index: index, isLast: false);
+                      } else{
+                        return CityCard(name: cubitCities[index], index: index, isLast: true);
+                      }
                     },
                   ),
                 );
