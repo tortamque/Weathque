@@ -44,41 +44,45 @@ class WeathqueApp extends StatelessWidget {
       child: MaterialApp(
         builder: FToastBuilder(),
         theme: theme(),
-        home: BlocBuilder<GetCurrentWeatherBloc, GetCurrentWeatherState>(
-          builder: (_, currentWeatherState) {
-            if(currentWeatherState is GetCurrentWeatherLoading){
-              return LoadingPage(color: CustomColors.yellow.color);
-            }
-            if(currentWeatherState is GetCurrentWeatherDone){
-              return BlocBuilder<GetWeatherForecastBloc, GetWeatherForecastState>(
-                builder: (_, forecastWeatherState) {
-                  if(forecastWeatherState is GetWeatherForecastLoading){
-                    return LoadingPage(color: CustomColors.yellow.color);
-                  }
-                  if(forecastWeatherState is GetWeatherForecastDone){
-                    List<String> cities = locator<GetCitiesUseCaseImplementation>()();
-                    List<String> colors = locator<GetColorsUseCaseImplementation>()();
-                    
-                    return CarouselSlider(
-                      slideTransform: const CubeTransform(),
-                      unlimitedMode: true,
-                      children: [
-                        for (int i = 0; i < cities.length; i++)
-                          WeatherPage(
-                            weatherEntity: currentWeatherState.weatherEntity![cities[i]]!,
-                            forecastWeatherEntity: forecastWeatherState.forecastWeatherEntity![cities[i]]!,
-                            color: Color(int.parse(colors[i])),
-                            city: cities[i],
-                          ),
-                      ],
-                    );
-                  }
-                  return const SizedBox();
-                },
-              );
-            }
-            return const SizedBox();
-          }
+        home: BlocBuilder<CitiesChangedCubit, List<String>>(
+          builder: (_, cubitCities) {
+            return BlocBuilder<GetCurrentWeatherBloc, GetCurrentWeatherState>(
+              builder: (_, currentWeatherState) {
+                if(currentWeatherState is GetCurrentWeatherLoading){
+                  return LoadingPage(color: CustomColors.yellow.color);
+                }
+                if(currentWeatherState is GetCurrentWeatherDone){
+                  return BlocBuilder<GetWeatherForecastBloc, GetWeatherForecastState>(
+                    builder: (_, forecastWeatherState) {
+                      if(forecastWeatherState is GetWeatherForecastLoading){
+                        return LoadingPage(color: CustomColors.yellow.color);
+                      }
+                      if(forecastWeatherState is GetWeatherForecastDone){
+                        List<String> cities = locator<GetCitiesUseCaseImplementation>()();
+                        List<String> colors = locator<GetColorsUseCaseImplementation>()();
+                        
+                        return CarouselSlider(
+                          slideTransform: const CubeTransform(),
+                          unlimitedMode: true,
+                          children: [
+                            for (int i = 0; i < cities.length; i++)
+                              WeatherPage(
+                                weatherEntity: currentWeatherState.weatherEntity![cities[i]]!,
+                                forecastWeatherEntity: forecastWeatherState.forecastWeatherEntity![cities[i]]!,
+                                color: Color(int.parse(colors[i])),
+                                city: cities[i],
+                              ),
+                          ],
+                        );
+                      }
+                      return const SizedBox();
+                    },
+                  );
+                }
+                return const SizedBox();
+              }
+            );
+          },
         )
       )
     );
