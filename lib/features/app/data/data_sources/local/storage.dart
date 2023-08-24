@@ -17,11 +17,25 @@ class StorageImplementation implements Storage{
 
   Future<void> _initPrefs() async {
     prefs = await SharedPreferences.getInstance();
+    await _fillEmptyStorage();
   }
 
   Future<void> ensurePrefsInitialized() async {
     if (prefs == null) {
       await _initPrefs();
+    }
+  }
+
+  Future<void> _fillEmptyStorage() async{
+    List<String> defaultCities = ["Paris", "New York", "Sydney"];
+    List<String> defaultColors = ["4294959426", "4282566399", "4294927572"];
+
+    List<String> cities = getCities();
+    List<String> colors = getColors();
+
+    if(cities.length == 0 || colors.length == 0){
+      await prefs!.setStringList('cities', defaultCities);
+      await prefs!.setStringList('colors', defaultColors);
     }
   }
 
