@@ -5,7 +5,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:weathque/config/theme/app_themes.dart';
 import 'package:weathque/config/theme/custom_colors.dart';
 import 'package:weathque/core/dependency_injection.dart';
-import 'package:weathque/features/app/domain/usecases/get_cities.dart';
 import 'package:weathque/features/app/domain/usecases/get_colors.dart';
 import 'package:weathque/features/app/presentation/bloc/add_city/cities_changed_cubit.dart';
 import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_bloc.dart';
@@ -55,21 +54,25 @@ class WeathqueApp extends StatelessWidget {
                     return LoadingPage(color: CustomColors.yellow.color);
                   }
                   if(forecastWeatherState is GetWeatherForecastDone){
-                    List<String> cities = locator<GetCitiesUseCaseImplementation>()();
-                    List<String> colors = locator<GetColorsUseCaseImplementation>()();
-
-                    return CarouselSlider(
-                      slideTransform: const CubeTransform(),
-                      unlimitedMode: true,
-                      children: [
-                        for (int i = 0; i < cities.length; i++)
-                          WeatherPage(
-                            weatherEntity: currentWeatherState.weatherEntity![cities[i]]!,
-                            forecastWeatherEntity: forecastWeatherState.forecastWeatherEntity![cities[i]]!,
-                            color: Color(int.parse(colors[i])),
-                            city: cities[i],
-                          ),
-                      ],
+                    return BlocBuilder<CitiesChangedCubit, List<String>>(
+                      builder: (context, state) {
+                        List<String> cities = state;
+                        List<String> colors = locator<GetColorsUseCaseImplementation>()();
+                        
+                        return CarouselSlider(
+                          slideTransform: const CubeTransform(),
+                          unlimitedMode: true,
+                          children: [
+                            for (int i = 0; i < cities.length; i++)
+                              WeatherPage(
+                                weatherEntity: currentWeatherState.weatherEntity![cities[i]]!,
+                                forecastWeatherEntity: forecastWeatherState.forecastWeatherEntity![cities[i]]!,
+                                color: Color(int.parse(colors[i])),
+                                city: cities[i],
+                              ),
+                          ],
+                        );
+                      },
                     );
                   }
                   return const SizedBox();
