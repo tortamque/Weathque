@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class Storage {
-  late SharedPreferences prefs;
+  SharedPreferences? prefs;
   Future<bool> saveCity(String cityName, String colorValue);
   List<String> getCities();
   List<String> getColors();
@@ -9,14 +9,20 @@ abstract class Storage {
 }
 
 class StorageImplementation implements Storage{
-  late SharedPreferences prefs;
+  SharedPreferences? prefs;
 
-  StorageImplementation() {
+  StorageImplementation(){
     _initPrefs();
   }
 
   Future<void> _initPrefs() async {
     prefs = await SharedPreferences.getInstance();
+  }
+
+  Future<void> ensurePrefsInitialized() async {
+    if (prefs == null) {
+      await _initPrefs();
+    }
   }
 
   @override
@@ -27,8 +33,8 @@ class StorageImplementation implements Storage{
     if(!cities.contains(cityName)){
       cities.add(cityName);
       colors.add(colorValue);
-      await prefs.setStringList('cities', cities);
-      await prefs.setStringList('colors', colors);
+      await prefs!.setStringList('cities', cities);
+      await prefs!.setStringList('colors', colors);
 
       return true;
     }
@@ -38,13 +44,13 @@ class StorageImplementation implements Storage{
   
   @override
   List<String> getCities() {
-    final List<String> cities = prefs.getStringList('cities') ?? [];
+    final List<String> cities = prefs!.getStringList('cities') ?? [];
 
     return cities;
   }
 
   List<String> getColors(){
-    final List<String> colors = prefs.getStringList('colors') ?? [];
+    final List<String> colors = prefs!.getStringList('colors') ?? [];
 
     return colors;
   }
@@ -58,9 +64,9 @@ class StorageImplementation implements Storage{
     cities.remove(cityName);
     colors.removeAt(colorIndex);
 
-    await prefs.remove('cities');
-    await prefs.remove('colors');
-    await prefs.setStringList('cities', cities);
-    await prefs.setStringList('colors', colors);
+    await prefs!.remove('cities');
+    await prefs!.remove('colors');
+    await prefs!.setStringList('cities', cities);
+    await prefs!.setStringList('colors', colors);
   }
 }
