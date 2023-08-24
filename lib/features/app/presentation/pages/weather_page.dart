@@ -22,7 +22,7 @@ class WeatherPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: color,
-      appBar: CustomAppBar(title: city),
+      appBar: CustomAppBar(title: city, bottomSheetColor: color),
       body: Row(
       children: [
           const Spacer(flex: 1,),

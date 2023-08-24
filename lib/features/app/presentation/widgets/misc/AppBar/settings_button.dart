@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/bottom_sheet/bottom_sheet.dart';
 
 class SettingsButton extends StatefulWidget {
-  const SettingsButton({super.key});
+  final Color bottomSheetColor;
+
+  const SettingsButton({super.key, required this.bottomSheetColor});
 
   @override
   State<SettingsButton> createState() => _SettingsButtonState();
@@ -45,7 +47,7 @@ class _SettingsButtonState extends State<SettingsButton> with TickerProviderStat
           _controller.reset();
           _controller.forward();
 
-          showCustomBottomSheet(context);
+          showCustomBottomSheet(context, widget.bottomSheetColor);
         },
       ),
     );

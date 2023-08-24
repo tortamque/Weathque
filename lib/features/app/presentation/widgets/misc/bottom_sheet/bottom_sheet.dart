@@ -13,14 +13,14 @@ import 'package:weathque/features/app/presentation/widgets/misc/toast/custom_toa
 
 TextEditingController _cityController = TextEditingController();
 
-showCustomBottomSheet(BuildContext context){
+showCustomBottomSheet(BuildContext context, Color backgroundColor){
   showModalBottomSheet(
     context: context, 
     isScrollControlled: true,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
     ),
-    backgroundColor: CustomColors.yellow.color,
+    backgroundColor: backgroundColor,
     builder:(context) {
       return _buildBottomSheetMenu(context);
     },

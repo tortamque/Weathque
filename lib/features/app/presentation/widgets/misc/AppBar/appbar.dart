@@ -3,8 +3,9 @@ import 'package:weathque/features/app/presentation/widgets/misc/AppBar/settings_
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
   final String title;
+  final Color bottomSheetColor;
 
-  const CustomAppBar({required this.title, super.key});
+  const CustomAppBar({required this.title, super.key, required this.bottomSheetColor});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
         elevation: 0,
         centerTitle: true,
         actions: [
-          SettingsButton()
+          SettingsButton(bottomSheetColor: bottomSheetColor)
         ],
         title: Text(
           title, 

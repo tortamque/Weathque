@@ -57,7 +57,7 @@ class WeathqueApp extends StatelessWidget {
                   if(forecastWeatherState is GetWeatherForecastDone){
                     List<String> cities = locator<GetCitiesUseCaseImplementation>()();
                     List<String> colors = locator<GetColorsUseCaseImplementation>()();
-                    
+
                     return CarouselSlider(
                       slideTransform: const CubeTransform(),
                       unlimitedMode: true,
