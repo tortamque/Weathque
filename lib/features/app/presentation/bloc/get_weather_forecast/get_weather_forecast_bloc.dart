@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weathque/features/app/domain/entities/cities_enum.dart';
+import 'package:weathque/core/dependency_injection.dart';
 import 'package:weathque/features/app/domain/entities/forecast_weather_entity.dart';
+import 'package:weathque/features/app/domain/usecases/get_cities.dart';
 import 'package:weathque/features/app/domain/usecases/get_weather_forecast.dart';
 import 'package:weathque/features/app/presentation/bloc/get_weather_forecast/get_weather_forecast_event.dart';
 import 'package:weathque/features/app/presentation/bloc/get_weather_forecast/get_weather_forecast_state.dart';
@@ -13,13 +14,13 @@ class GetWeatherForecastBloc extends Bloc<GetWeatherForecastEvent, GetWeatherFor
   }
 
   void onGetWeatherForecast(GetWeatherForecast event, Emitter<GetWeatherForecastState> emitter) async{
-    List<City> cities = City.values;
+    List<String> cities = locator<GetCitiesUseCaseImplementation>()();
     Map<String, ForecastWeatherEntity> entities = {};
     
     for (var city in cities) {
-      final dataState = await _getWeatherForecastUseCase(cityName: city.string);
+      final dataState = await _getWeatherForecastUseCase(cityName: city);
 
-      entities[city.string] = dataState;
+      entities[city] = dataState;
     }
     
     // ignore: invalid_use_of_visible_for_testing_member
