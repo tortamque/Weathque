@@ -1,12 +1,19 @@
 import 'package:get_it/get_it.dart';
 // ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
+import 'package:weathque/features/app/data/data_sources/local/storage.dart';
 import 'package:weathque/features/app/data/data_sources/remote/api_service.dart';
+import 'package:weathque/features/app/data/repository/storage_repository_implementation.dart';
 import 'package:weathque/features/app/data/repository/weather_repository_implementation.dart';
 import 'package:weathque/features/app/domain/entities/summary_builder.dart';
 import 'package:weathque/features/app/domain/repository/weather_repository.dart';
+import 'package:weathque/features/app/domain/usecases/delete_city.dart';
+import 'package:weathque/features/app/domain/usecases/get_cities.dart';
+import 'package:weathque/features/app/domain/usecases/get_colors.dart';
 import 'package:weathque/features/app/domain/usecases/get_current_weather.dart';
 import 'package:weathque/features/app/domain/usecases/get_weather_forecast.dart';
+import 'package:weathque/features/app/domain/usecases/save_city.dart';
+import 'package:weathque/features/app/presentation/bloc/add_city/cities_changed_cubit.dart';
 import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_bloc.dart';
 import 'package:weathque/features/app/presentation/bloc/get_weather_forecast/get_weather_forecast_bloc.dart';
 
@@ -24,12 +31,18 @@ Future<void> initializeDependencies() async {
     ForecastWeatherApiService(locator())
   );
 
+  // Storage
+  locator.registerSingleton<StorageImplementation>(StorageImplementation());
+
   // Repo
   locator.registerSingleton<WeatherRepository>(
     WeatherRepositoryImplementation(locator())
   );
   locator.registerSingleton<ForecastWeatherRepository>(
     ForecastWeatherRepositoryImplementation(locator())
+  );
+  locator.registerSingleton<StorageRepositoryImplementation>(
+    StorageRepositoryImplementation(locator<StorageImplementation>())
   );
 
   // Use cases
@@ -38,6 +51,18 @@ Future<void> initializeDependencies() async {
   );
   locator.registerSingleton<GetWeatherForecastUseCase>(
     GetWeatherForecastUseCase(locator())
+  );
+  locator.registerSingleton<SaveCityUseCaseImplementation>(
+    SaveCityUseCaseImplementation(locator<StorageRepositoryImplementation>())
+  );
+  locator.registerSingleton<GetCitiesUseCaseImplementation>(
+    GetCitiesUseCaseImplementation(locator<StorageRepositoryImplementation>())
+  );
+  locator.registerSingleton<DeleteCityUseCaseImplementation>(
+    DeleteCityUseCaseImplementation(locator<StorageRepositoryImplementation>())
+  );
+  locator.registerSingleton<GetColorsUseCaseImplementation>(
+    GetColorsUseCaseImplementation(locator<StorageRepositoryImplementation>())
   );
 
   // Blocs
@@ -48,6 +73,11 @@ Future<void> initializeDependencies() async {
     () => GetWeatherForecastBloc(locator())
   );
 
-  //Entities
+  // Cubit
+  locator.registerFactory<CitiesChangedCubit>(
+    () => CitiesChangedCubit()
+  );
+
+  // Entities
   locator.registerSingleton(SummaryBuilder());
 }
