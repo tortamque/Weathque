@@ -2,7 +2,8 @@
 # Weathque
 
 ## Description
-Weathque is a dynamic weather application created using Flutter and Dart, offering a seamless way to stay informed about the weather conditions. Embrace every day fully prepared with accurate real-time weather updates and a comprehensive 5-day forecast. Designed with the user in mind, Weathque integrates a [Clean architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) pattern, combining [Repository](https://developer.android.com/codelabs/basic-android-kotlin-training-repository-pattern#3) and [Bloc](https://bloclibrary.dev/#/flutterbloccoreconcepts) patterns, to ensure efficient data management and an intuitive experience.
+Weathque is a dynamic weather application created using Flutter and Dart, offering a seamless way to stay informed about the weather conditions. Embrace every day fully prepared with accurate real-time weather updates and a comprehensive 5-day forecast.</br>
+Designed with the user in mind, Weathque integrates a [Clean architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) pattern, combining [Repository](https://developer.android.com/codelabs/basic-android-kotlin-training-repository-pattern#3) and [Bloc](https://bloclibrary.dev/#/flutterbloccoreconcepts) patterns, to ensure efficient data management and an intuitive experience.
 
 ## Table of Contents
 - [Design](#design)
@@ -12,6 +13,7 @@ Weathque is a dynamic weather application created using Flutter and Dart, offeri
 - [Installation](#installation)
 - [Usage](#usage)
 - [Screenshots and Demo](#screenshots-and-demo)
+- [Changelog](#changelog)
 - [Used Packages](#used-packages)
 - [License](#license)
 
@@ -23,9 +25,17 @@ Weathque is a dynamic weather application created using Flutter and Dart, offeri
 
 <a name="architecture"/></a>
 ## Architecture
-Weathque fully embraces the Clean Architecture pattern, incorporating both the Bloc and Repository patterns.</br></br>
-<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/90132962/261075240-56f7197b-7a51-4c80-94c1-206382e6fb1a.png" width="90%">
+Weathque fully embraces the Clean Architecture pattern, incorporating both the Bloc and Repository patterns.</br>
+Clean Architecture consists of the following layers: 
+1) Data Layer
+2) Domain Layer (Business Logic)
+3) Presentation Layer (UI) </br></br>
 
+Architecture for <b>API calls</b>:
+![API](https://github.com/tortamque/Weathque/assets/90132962/4293e9f4-f2ef-4255-ae59-b6caa9a0bb3f)
+
+Architecture for <b>Storage calls</b>:
+![Prefs](https://github.com/tortamque/Weathque/assets/90132962/33e5c053-7fcc-4080-819c-6d823adf6220)
 
 <a name="features"/></a>
 ## Features
@@ -34,6 +44,7 @@ Weathque fully embraces the Clean Architecture pattern, incorporating both the B
 - Get weather updates for a variety of cities, allowing you to stay informed about conditions worldwide.
 - Elegant design featuring captivating animations and a vibrant color palette.
 - Experience a responsive design that seamlessly adapts to different devices.
+- Easily add your own cities and track the weather in each of them.
 
 <a name="supported-platforms"/></a>
 ## Supported platforms
@@ -56,17 +67,37 @@ To run the Weathque app locally, follow these steps:
 2. Swipe right to navigate to the weather forecast of the next city.
 3. Swipe left to move back to the weather forecast of the previous city.
 4. For a 5-day weather forecast, simply swipe the "Weekly Forecast" cards.
+5. To add your own city, follow these steps:
+    * Tap the "Settings" icon on the app bar.   
+    * Enter your city name.
+    * A new card will appear on the screen.
+    * Close the Settings menu.
+    * Swipe to your newly added city.
+7. To remove unnecessary city tap "Settings" icon on the app bar
+    * Tap the "Settings" icon on the app bar.
+    * Swipe right or left on the city you want to remove.
+    * The city will be removed.
 
 <a name="screenshots-and-demo"/></a>
 ## Screenshots and Demo
 ### Screenshots
-<img src="https://github.com/tortamque/Weathque/assets/90132962/87803b01-3b25-4b50-a674-eab5a1a57618" alt="Screenshot_1" width="200">
-<img src="https://github.com/tortamque/Weathque/assets/90132962/e11c5b37-11c0-4311-9fb0-86b3c558e001" alt="Screenshot_2" width="200">
-<img src="https://github.com/tortamque/Weathque/assets/90132962/4cd6d3ab-b7c3-4d03-bfe1-84ac0fd94cd9" alt="Screenshot_3" width="200">
+<img src="https://github.com/tortamque/Weathque/assets/90132962/46b8891c-d7a9-48eb-8787-a572dbc0edd1" alt="Screenshot_1" width="200">
+<img src="https://github.com/tortamque/Weathque/assets/90132962/f337aa82-84ce-43cb-a6aa-c1690c612b21" alt="Screenshot_2" width="200">
+<img src="https://github.com/tortamque/Weathque/assets/90132962/21956b23-9a88-44fd-b75d-ac3185403177" alt="Screenshot_3" width="200">
+<img src="https://github.com/tortamque/Weathque/assets/90132962/4b3a76ff-fb5c-4c8b-ad12-9265781df2fa" alt="Screenshot_4" width="200">
 
 ### Demo
-https://github.com/tortamque/Weathque/assets/90132962/c11dfbac-eea0-438b-afae-ba1658024ed2
+https://github.com/tortamque/Weathque/assets/90132962/9016515a-ecdc-461d-abbc-47d882c64d4c
 
+<a name="changelog"/></a>
+## Changelog
+### [1.1] - 25.08.2023
+  #### Added
+ - Now you can easily add your own cities and track the weather in each of them. 🔮
+ 
+### [1.0] - 16-08-2023
+  #### Added
+ - Initial release.
 
 <a name="used-packages"/></a>
 ## Used Packages
@@ -79,6 +110,8 @@ The Weathque app utilizes the following packages:
 | get_it                 | 7.6.0   | [Link](https://pub.dev/packages/get_it)                  |
 | intl                   | 0.18.1  | [Link](https://pub.dev/packages/intl)                    |
 | flutter_carousel_slider| 1.1.0   | [Link](https://pub.dev/packages/flutter_carousel_slider) |
+| fluttertoast           | 8.2.2   | [Link](https://pub.dev/packages/fluttertoast)            |
+| shared_preferences     | 2.2.0   | [Link](https://pub.dev/packages/shared_preferences)      |
 
 <a name="licenses"/></a>
 ## License
