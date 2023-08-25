@@ -61,7 +61,7 @@ void _onSubmit(FToast toastManager, BuildContext context) async {
   String cityName = _cityController.text;
 
   try {
-    var response = await locator<GetCurrentWeatherUseCase>()(cityName: cityName);
+    await locator<GetCurrentWeatherUseCase>()(cityName: cityName);
   } catch (_) {
     _onError(toastManager);
     return; 
