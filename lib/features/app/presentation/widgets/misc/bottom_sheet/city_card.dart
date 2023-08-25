@@ -70,6 +70,9 @@ class _CityCardState extends State<CityCard> {
                 context.read<CitiesChangedCubit>()();
               },
               child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15.0))
+                ),
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 15),
