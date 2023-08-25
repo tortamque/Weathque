@@ -12,7 +12,8 @@ import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_
 import 'package:weathque/features/app/presentation/bloc/get_current_weather/get_current_weather_event.dart';
 import 'package:weathque/features/app/presentation/bloc/get_weather_forecast/get_weather_forecast_bloc.dart';
 import 'package:weathque/features/app/presentation/bloc/get_weather_forecast/get_weather_forecast_event.dart';
-import 'package:weathque/features/app/presentation/widgets/misc/bottom_sheet/city_card.dart';
+import 'package:weathque/features/app/presentation/widgets/misc/bottom_sheet/widgets/bottom_sheet_list_view.dart';
+import 'package:weathque/features/app/presentation/widgets/misc/bottom_sheet/widgets/bottom_sheet_text_field.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/toast/custom_toast.dart';
 
 TextEditingController _cityController = TextEditingController();
@@ -43,54 +44,13 @@ Widget _buildBottomSheetMenu(BuildContext context){
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          TextField(
-            controller: _cityController,
-            onSubmitted: (value) {
-              _onSubmit(toastManager, context);
-            },
-            textCapitalization: TextCapitalization.words,
-            cursorColor: Colors.black,
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                borderSide: BorderSide(color: Colors.black)
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                borderSide: BorderSide(color: Colors.black)
-              ),
-              hintText: "Enter a city",
-              labelText: "City",
-              labelStyle: TextStyle(
-                color: Colors.black
-              ),
-              suffixIcon: IconButton(
-                icon: Icon(Icons.search, color: Colors.black),
-                onPressed: () {
-                  _onSubmit(toastManager, context);
-                },
-              )
-            ),
+          BottomSheetTextField(
+            controller: _cityController, 
+            toastManager: toastManager, 
+            onSubmit: _onSubmit
           ),
-          Expanded(
-            child: BlocBuilder<CitiesChangedCubit, List<String>>(
-              builder: (context, cubitCities) {
-                return Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: ListView.builder(
-                    itemCount: cubitCities.length,
-                    itemBuilder: (context, index) {
-                      if(cubitCities.length > 1){
-                        return CityCard(name: cubitCities[index], index: index, isLast: false);
-                      } else{
-                        return CityCard(name: cubitCities[index], index: index, isLast: true);
-                      }
-                    },
-                  ),
-                );
-              },
-            ),
-          )
+          
+          BottomSheetListView()
         ],
       ),
     ),
