@@ -10,7 +10,7 @@ class LoadingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: color,
-      appBar: const CustomAppBar(title: "Loading"),
+      appBar: CustomAppBar(title: "Loading", bottomSheetColor: color),
       body: const Center(
         child: SizedBox(
           width: 100,
