@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:weathque/features/app/presentation/widgets/misc/AppBar/settings_button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
@@ -21,6 +22,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
           style: const TextStyle(
             fontWeight: FontWeight.bold
           ),
+        ),
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.dark, 
         ),
       );
   }
