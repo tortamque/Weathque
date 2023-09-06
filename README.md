@@ -95,7 +95,7 @@ https://github.com/tortamque/Weathque/assets/90132962/9016515a-ecdc-461d-abbc-47
   #### Added
  - Now you can easily add your own cities and track the weather in each of them. 🔮
  
-### [1.0] - 16-08-2023
+### [1.0] - 16.08.2023
   #### Added
  - Initial release.
 
